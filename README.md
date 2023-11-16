@@ -15,7 +15,7 @@
 
 - **💻 공부한 내용**
     - **[라이브러리, 프레임워크, UI / 티스토리 블로그](https://rclogstorage.tistory.com/122)**
-    - **[React의 정의]()**
+    - **[React의 정의](/React_Theory/React의%20정의.md)**
 
 ---
 

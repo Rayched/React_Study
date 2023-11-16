@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ReactJS로 HTML Element 추가하기</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- 
+    개발자 Console에서 'React', 'ReactDOM'을 입력하면
+    React, ReactDOM의 구조 파악 가능 (property, method's)
+-->
+<script>
+    const ElementBox = document.getElementById("box");
+    const span = React.createElement(
+        "span", { id: "span_exam"}, "span element"
+    );
+
+    ReactDOM.render(span, ElementBox);
+
+    //React의 'createElement()' 메서드를 통해
+    //HTML Element 요소를 생성하고
+    //ReactDOM의 'render()' 메서드를 통해서
+    //'box'라는 id 값을 가진 div 요소 안에
+    //방금 전 생성한 HTML Element 요소를 추가한다.
+
+    //물론 이를 위해서는 HTML <div id="box"> 요소를 
+    //dom 객체의 형태로 가져와야한다.
+</script>
+</html>

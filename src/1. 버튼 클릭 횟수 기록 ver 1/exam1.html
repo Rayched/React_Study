@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>버튼 클릭 횟수 Count</title>
+</head>
+<body>
+    <h4>버튼을 클릭한 횟수를 보여주는 웹 페이지</h4>
+    <p>ReactJS를 사용하지 않고, HTML과 JavaScript로만 구현</p>
+    <p><b>코드 작성 일자: 2023.11.15 수요일</b></p>
+    <hr/><br/>
+    <div>
+        <span id="ClickBtn">
+            <button style="color: red;">Click !</button>
+        </span>
+        <span id="ResetBtn">
+            <button style="color: red;">RESET</button>
+        </span>
+    </div>
+    <br/>
+    <div id="ClickCount">
+        버튼 클릭 횟수 : 0
+    </div>
+</body>
+<script>
+    //[Click !] 버튼을 클릭했을 때, 내가 클릭한 횟수가 나오도록 구현
+    //[RESET] 버튼을 클릭하면, 클릭 횟수가 0으로 초기화
+
+    const ClickBtn = document.getElementById("ClickBtn");
+    const ResetBtn = document.getElementById("ResetBtn");
+    const ClickCount = document.getElementById("ClickCount");
+
+    let Count = 0;
+
+    const BtnClickCount = () => {
+        Count = Count + 1;
+        ClickCount.innerText = `버튼 클릭 횟수 : ${Count}`;
+    };
+
+    const CountReset = () => {
+        alert("버튼 클릭 횟수를 초기화합니다.");
+        Count = 0;
+        ClickCount.innerText = `버튼 클릭 횟수 : ${Count}`;
+    };
+
+    ClickBtn.addEventListener("click", BtnClickCount);
+    ResetBtn.addEventListener("click", CountReset);
+</script>
+</html>
