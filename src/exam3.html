@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React Basic 예제 3</title>
+</head>
+<body>
+    <!-- React에서 Event를 감지하는 원리 -->
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const header4 = React.createElement("h4", null, "Click Here 👇");
+    const btn = React.createElement("button", null, "Click");
+
+    const container = React.createElement("div", null, [span, btn]);
+    //React.createElement()로 생성하는 HTML Element를
+    //동시에 rendering 하는 방법
+    //새로 생성되는 <div> 요소에
+    //span, btn을 배열의 형태로 전달한다.
+    //'header4', 'btn' 두 개의 컴포넌트를 자식 요소로 가지는
+    //'container'라는 하나의 컴포넌트를 생성함.
+
+    ReactDOM.render(container, root);
+    //'container' 컴포넌트를 HTML에서 'root'라는 id 값을 가진
+    //<div> 요소 내부에 렌더링함.
+</script>
+</html>
