@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React Basic 예제 4</title>
+</head>
+<body>
+    <!-- 
+        React에서 Component를 만드는 함수인 createElement()를
+        대체하는 문법이 있다.
+        그 문법을 JSX라고 한다.
+    -->
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- Babel을 통해 JSX로 작성한 코드를 브라우저가 이해할 수 있는 형태로 변환 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    //script 태그 내부의 코드의 타입을 Babel로 명시
+
+    const root = document.getElementById("root");
+    /*
+    기존에 배웠던 문법
+
+    const Btn = React.createElement(
+    "button", 
+    { onClick: () => alert("Click!") }, 
+    "Click"
+    );
+    */
+
+   //JSX 문법을 활용해서 위와 똑같은 형태의 React Component를 생성
+   const Btn = <button onClick={ () => alert("Click!")}>Click</button>
+   ReactDOM.render(Btn, root);
+   //이대로 코드를 실행하면 아래와 같은 Error가 발생한다.
+   //Uncaught SyntaxError: Unexpected token '<' (at exam4.html:68:16)
+   //이는 브라우저 엔진이 JSX 문법을 해석하지 못해서 발생하는 문제이다.
+   //그렇기에 우리는 JSX 문법으로 생성한 Component를
+   //React.createElement()로 생성한 Component로 변환해줘야 한다.
+
+   //Babel을 통해 JSX 문법으로 작성한 코드를
+   //웹 브라우저가 이해할 수 있는 형태로 변환하는 것이 가능하다.
+   /*
+    import { jsx as _jsx } from "react/jsx-runtime";
+    const Btn = /*#__PURE__* /_jsx("button", {
+    onClick: () => alert("Click!"),
+    children: "Click"
+    })
+    */
+   //물론 매번 Babel로 들어가서 일일히 수동으로 변환하는 것은
+   //비효율적이기에 HTML에 React를 추가한 것 처럼
+   //script 태그의 src로 Babel을 추가해주고
+   //코드를 작성한 script 태그의 type을 'text/babel'로 명시하면
+   //Error가 발생하지 않고 코드가 정상적으로 실행되는 것을 확인할 수 있다.
+   /*
+    src="https://unpkg.com/@babel/standalone/babel.min.js"
+    type="text/babel"
+   */
+
+</script>
+</html>

@@ -13,9 +13,40 @@
 <script>
     const root = document.getElementById("root");
     const header4 = React.createElement("h4", null, "Click Here 👇");
-    const btn = React.createElement("button", null, "Click");
 
-    const container = React.createElement("div", null, [span, btn]);
+    /*
+        Before => React를 활용하지 않고
+                  HTML, JS만 활용해서 button 클릭 예제 작성
+
+        <button id="ClickBtn">Click</button>
+
+        const ClickBtn = document.getElementById("ClickBtn");
+        function BtnClickEvent(){ 
+            alert("버튼을 클릭했습니다.");
+        }
+        ClickBtn.addEventListener("click", BtnClickEvent);
+
+        1. getElementById() 함수를 통해
+           HTML 요소를 dom 객체로 가져오고
+           이를 임의의 변수에 저장한다.
+        2. addEventListener() 함수를 통해
+           가져온 HTML 요소에 특정한 event가 발생하면 (click, MouseEnter 등)
+           callback 함수를 실행하는 것으로 사용자의 요청에 따른
+           응답을 출력한다.
+           (요청: "button click")
+           (응답: "버튼을 클릭했습니다." 라고 적혀있는 알림창 출력)
+    */
+
+    const btn = React.createElement("button", { 
+        onClick: () => { alert("버튼을 클릭했습니다."); },
+        //addEventListener를 대체
+        //on + 'Event'
+    }, "Click");
+    //버튼 요소를 만들고, content를 추가하고
+    //EventLisner도 추가하였다.
+    //위의 방식으로 'Before'에서 작성한 코드를 한번에 대채하였다.
+
+    const container = React.createElement("div", null, [header4, btn]);
     //React.createElement()로 생성하는 HTML Element를
     //동시에 rendering 하는 방법
     //새로 생성되는 <div> 요소에
