@@ -10,19 +10,20 @@
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script>
-    //Start
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    const Exam = React.createElement("div", { id: "div1" }, "Test");
-
-    root.render(Exam);
-    //'root.render()'
-    //'const root = ReactDOM.createRoot(document.getElementById("root"))'' 함수를 통해 
-    //HTML 요소를 DOM 객체로 가져와야 한다.
-    //변수 root를 통해서 ReactDOM 객체의 root 메서드로 접근
-
-    //'ReactDOM.render()'
-    //ReactDOM 객체의 render 메서드를 실행
-    //직접적으로 접근
-    //End
+    const root = document.getElementById("root");
+    const Header = React.createElement("h4", null, "Click Here 👇");
+    const Btn = React.createElement(
+        "button", 
+        { 
+            id: "ClickBtn",
+            onClick: function() {
+                alert("안녕하세요.");
+            }
+        },
+        "Click"
+    );
+    
+    const Btn_Container = React.createElement("div", null, [Header, Btn]);
+    ReactDOM.render(Btn_Container, root);
 </script>
 </html>
