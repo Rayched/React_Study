@@ -212,10 +212,45 @@ ReactDOM.render(Btn_Container, root);
 ---
 #### JSX
 
-``` jsx
-const Btn = (
-	<button onClick={ () => alert("Hello") }>
-	Click
-	</button>
-);
+- 지금까지 배웠던 `React Element` 생성하기 위해서 아래와 같이 코드를 작성했었다.
+
+``` js
+const R_Element = React.createElement("div", null, "React Element Example");
 ```
+
+- 다만 이 방법은 시각적으로 봤을 때 `HTML Element`를 만든다는 느낌은 별로 들지 않는다.
+- 물론 `React Component` 만들 때, 위의 방법은 잘 사용하지 않는다.
+- 주로 JSX라는 방법을 통해서 `React Component`를 만들기 때문이다.
+
+- **`JSX`** 는 `JavaScript`를 확장한 문법으로 <br/>
+   아래와 같이 `HTML` 태그 문법과 유사한 형태를 보여주고 있다.
+   
+``` jsx
+const R_Element = <div>React Element Example</div>;
+```
+
+- `createElement()` 함수를 통해서 `React Element` 구현한 예시와 <br/>
+  **`JSX`** 문법을 활용해서 `React Element` 구현한 예시를 비교했을 때 <br/>
+  `JSX` 문법 쪽이 좀 더 직관적으로 보인다는 것을 알 수 있다.
+
+- 이제 앞에서 구현했던 **버튼 예제**를 `JSX` 문법을 활용해서 똑같이 구현해보자.
+- 
+``` js
+//예시
+
+const root = document.getElementById("root");
+
+const Head_Text = React.createElement("h4", null, "Click Here 👇");
+const Click_Btn = React.createElement(
+	"button",
+	{
+		id: "ClickBtn"
+		onClick: () => alert("안녕하세요.");
+	},
+	"Click!"
+);
+
+const Container = React.createElement("div", null, [Head_Text, Click_Btn]);
+ReactDOM.render(Container, root);
+```
+

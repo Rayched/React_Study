@@ -22,8 +22,17 @@
         },
         "Click"
     );
+
+    const R_Element = React.createElement(
+	"div",
+	{ 
+		id: "Test",
+		style: { color: "Green" }
+	},
+	"React Element 입니다."
+    );
     
-    const Btn_Container = React.createElement("div", null, [Header, Btn]);
+    const Btn_Container = React.createElement("div", null, [Header, Btn, R_Element]);
     ReactDOM.render(Btn_Container, root);
 </script>
 </html>
