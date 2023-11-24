@@ -13,7 +13,6 @@
 - **[React 공식 사이트](https://ko.legacy.reactjs.org/)**
 - **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)**
 <br/>
-<br/>
 <hr/>
 
 ### 1. React : `Basic`
