@@ -11,6 +11,7 @@
         <p>
             <b>state</b>를 활용해서 버튼을 클릭하면 <br/>
             <b>"버튼 클릭 횟수"</b>가 올라가도록 코드를 구현한다. <br/>
+            이번 예제는 Re Rendering을 구현하는 방법 중 원시적인 느낌으로 구현하였다.
         </p>
         <hr/>
     </div>
@@ -46,6 +47,10 @@
 
     const BtnClickCount = () => {
         Counter = Counter + 1;
+        render();
+    }
+
+    function render(){
         ReactDOM.render(<Container />, root);
     }
 
@@ -79,8 +84,35 @@
         //그리고 이는 BtnClickCount 함수를 호출할 때
         //Container를 root 요소에 다시 Rendering을 하는 것으로
         //버튼 클릭 횟수가 올라가지 않던 문제가 해결됐다.
+
+        //이번에는 rendering을 수행할 임의의 함수를 만들고
+        //이를 호출해서 웹 페이지를 rendering하도록 수정해보자.
     };
 
-    ReactDOM.render(<Container />, root);
+    render();
+    //웹 페이지가 처음 rendering될 때 (render 함수 실행)
+    //변수 Counter의 값은 0이다.
+    //그리고 button을 클릭할 때마다, 해당 요소의 onClick 속성으로
+    //전달한 BtnClickCount 함수가 실행되고, 
+    //해당 함수는 변수 Counter의 값을 증가시키고 render() 함수를 실행된다.
+    //그리고 render() 함수는 앞에서 진행했던
+    //Container 요소를 root라는 id 값을 가진 <div> 요소에 담아준다.
+
+    //이때 변수 Counter의 값은 BtnClickCount 함수에서
+    //증가된 값이 그대로 반영이 된다.
+    //즉, 버튼을 클릭할 때마다 '버튼 클릭 횟수 : n'도
+    //거기에 맞춰서 바뀐다는 것이다.
+
+    //물론 이는 최선의 방법이 아니다.
+    //값이 바뀔 때마다 다시 랜더링을 해야하는데
+    //별로 좋은 방법은 아니다.
+
+    //Vanilla JS로 작성한 버튼 클릭 예제는
+    //'[버튼 클릭 횟수 : n]' 부분의 요소 전체를 업데이트하는 반면
+    //ReactJS로 작성한 버튼 클릭 예제는
+    //'버튼 클릭 횟수 : [n]'에서 업데이트 할 요소인
+    //'[n]' 부분만 업데이트되는 것을 확인할 수 있다.
+
+    //전체 요소를 재생성하지 않고, 바뀐 부분만 업데이트한다.
 </script>
 </html>
