@@ -23,26 +23,6 @@
 <script type="text/babel">
     const root = document.getElementById("root");
 
-    //Chrome 개발자 콘솔에서 <head> 태그 내부의
-    //<script> 태그를 열어보면
-    //위에서 작성한 <h4>, <button>, <div> 등의 JSX 문법으로
-    //만든 Element를 해당 <script> 태그에서
-    //React.createElement() 함수를 통해 생성하는 것을 확인 가능
-
-    //처음 Vanilla JS로 구현한 예제처럼
-    //버튼을 클릭할 때 마다 버튼 클릭 횟수가 올라가게끔
-    //구현을 해야한다.
-    //state를 통해 구현할 것이고
-    //두 개의 방법이 존재한다.
-
-    //Vanilla JS에서 HTML Element 내부의 텍스트를
-    //바꾸려고 했을 때 아래와 같은 방법을 사용했었다.
-
-    //span.innerText = `버튼 클릭 횟수 : ${Counter}`;
-
-    //JSX 문법으로 작성한 코드에 변수를 전달할 때는
-    //아래와 같은 형식으로 작성하면 된다.
-
     let Counter = 0;
 
     const BtnClickCount = () => {
@@ -62,57 +42,8 @@
             <div>버튼 클릭 횟수 : {Counter}</div>
         </div>
         );
-        //변수 Counter의 값을 바꾸면
-        //버튼 클릭 횟수 : 'number'의 숫자 값도 따라 바뀌는 것을 확인 가능
-        //'button'의 'onClick' prop의 값으로 BtnClickCount 함수 전달
-        //버튼을 클릭해도, 버튼 클릭 횟수가 올라가지는 않는다.
-        //console.log(Counter)로 확인해보면
-        //button의 onClick prop에 전달된 BtnClickCount 함수는
-        //문제없이 정상적으로 동작하는 것을 확인할 수 있다.
-
-        //eventListener는 정상적으로 동작하지만
-        //UI가 업데이트 되지 않아서 발생하는 문제
-
-        //Container를 웹 페이지에 랜더링할 때
-        //변수 Counter의 값은 0이다.
-        //아무리 우리가 버튼을 클릭해서 BtnClickCount 함수를 호출하고
-        //변수 Counter의 값을 올려도, 새로고침이 없기에
-        //웹 페이지에 나타나는 '버튼 클릭 횟수 : {Counter}'에서
-        //Counter의 초기 값이 0이기에, 웹 페이지에 나오는
-        //'버튼 클릭 횟수 : 0'도 그대로이다.
-
-        //그리고 이는 BtnClickCount 함수를 호출할 때
-        //Container를 root 요소에 다시 Rendering을 하는 것으로
-        //버튼 클릭 횟수가 올라가지 않던 문제가 해결됐다.
-
-        //이번에는 rendering을 수행할 임의의 함수를 만들고
-        //이를 호출해서 웹 페이지를 rendering하도록 수정해보자.
     };
 
     render();
-    //웹 페이지가 처음 rendering될 때 (render 함수 실행)
-    //변수 Counter의 값은 0이다.
-    //그리고 button을 클릭할 때마다, 해당 요소의 onClick 속성으로
-    //전달한 BtnClickCount 함수가 실행되고, 
-    //해당 함수는 변수 Counter의 값을 증가시키고 render() 함수를 실행된다.
-    //그리고 render() 함수는 앞에서 진행했던
-    //Container 요소를 root라는 id 값을 가진 <div> 요소에 담아준다.
-
-    //이때 변수 Counter의 값은 BtnClickCount 함수에서
-    //증가된 값이 그대로 반영이 된다.
-    //즉, 버튼을 클릭할 때마다 '버튼 클릭 횟수 : n'도
-    //거기에 맞춰서 바뀐다는 것이다.
-
-    //물론 이는 최선의 방법이 아니다.
-    //값이 바뀔 때마다 다시 랜더링을 해야하는데
-    //별로 좋은 방법은 아니다.
-
-    //Vanilla JS로 작성한 버튼 클릭 예제는
-    //'[버튼 클릭 횟수 : n]' 부분의 요소 전체를 업데이트하는 반면
-    //ReactJS로 작성한 버튼 클릭 예제는
-    //'버튼 클릭 횟수 : [n]'에서 업데이트 할 요소인
-    //'[n]' 부분만 업데이트되는 것을 확인할 수 있다.
-
-    //전체 요소를 재생성하지 않고, 바뀐 부분만 업데이트한다.
 </script>
 </html>

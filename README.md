@@ -5,8 +5,8 @@
 
 ### 📔 참고한 강의
 
-- **[ReactJS로 영화 웹 서비스 만들기 (노마드 코더)](https://nomadcoders.co/react-for-beginners/lobby)**
-- **[처음 만난 리액트 (Inflearn)](https://inf.run/YehVc)**
+- **[ReactJS로 영화 웹 서비스 만들기 / 노마드 코더 Nomad Coders](https://nomadcoders.co/react-for-beginners/lobby)**
+- **[처음 만난 리액트 / Inflearn](https://inf.run/YehVc)**
 
 
 ### 📃 Reference
@@ -24,7 +24,7 @@
 	- **[React의 정의와 장, 단점](/React_Theory/React의%20정의.md)**
 	- **[React Component 생성 방법](/React_Theory/React%20Component%20생성%20방법.md)**
 		- `React.createElement()`, `ReactDOM.render()`
-	- **[`JSX`의 정의]()**
+	- **[`JSX`의 정의 (미완성)]()**
 
 ---
 
@@ -32,8 +32,11 @@
 - **📆 기간: 2023.11.24 ~ 2023.00.00**
 
 - **📃 정리 내용**
-	- **[`state`의 정의]()**
+	- **[`state`의 정의 (미완성)]()**
 - **💻 Report**
-	- **[`state` 예제 1 (Re_Rendering 다소 어려운 형태로 구현하기)](/Report/2023.11.24_Friday/React_state_exam1.md)**
-	- **[`state` 예제 2 (Re_Rendering 쉬운 형태로 구현하기)]()**
+	- **[`state` 예제 1 (Re_Rendering 구현하기 ver 1)](/Report/2023.11.24_Friday/React_state_exam1.md)**
+		- 조금 어려운 형태로 `Re_Rendering` 구현하기
+
+	- **[`state` 예제 2 (Re_Renderin 구현하기 ver 2) (미완성)]()**
+		- 조금 더 쉽고 간편한 형태로 `Re_rendering` 구현하기
 ---
