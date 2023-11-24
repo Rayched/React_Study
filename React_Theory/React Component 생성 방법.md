@@ -206,7 +206,7 @@ ReactDOM.render(Btn_Container, root);
 ```
 
 - 개별적으로 `rendering` 하지 않고, 두 개의 `React Component`를 <br/>
-   하나의 `Container`로 묶어서 한 번에 `rendering` 하니 좀 더 편해졌다.
+   하나의 `Container`로 묶어서 한 번에 `rendering` 하니 좀 더 편해졌다. <br/>
    나름 유용한 방법 같으니 기억해두자.
 
 ---
