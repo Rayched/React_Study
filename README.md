@@ -11,9 +11,10 @@
 ---
 
 ### React Basic
-- **📆 기간: 2023.11.16 ~ 2023.11.22
-- **💻 정리 내용**
+- **📆 기간: 2023.11.16 ~ 2023.11.22**
+- **📃 정리 내용**
 	- **[React의 정의와 장, 단점](/React_Theory/React의%20정의.md)**
 	- **[React Component 생성 방법](/React_Theory/React%20Component%20생성%20방법.md)**
 		- `React.createElement()`, `ReactDOM.render()`, `JSX Basic`
-
+- **💻 Source Code**
+	- **[1주차, React Basic 예제 소스코드 모음](/src/1.%20JSX%20개요/)**

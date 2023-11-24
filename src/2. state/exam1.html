@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React - 버튼 클릭 예제 (state part I)</title>
+</head>
+<body>
+    <div>
+        <!-- 문제 정리 -->
+        <h4>[React] 버튼 클릭 예제</h4>
+        <p>
+            <b>state</b>를 활용해서 버튼을 클릭하면 <br/>
+            <b>"버튼 클릭 횟수"</b>가 올라가도록 코드를 구현한다. <br/>
+        </p>
+        <hr/>
+    </div>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+
+    //Chrome 개발자 콘솔에서 <head> 태그 내부의
+    //<script> 태그를 열어보면
+    //위에서 작성한 <h4>, <button>, <div> 등의 JSX 문법으로
+    //만든 Element를 해당 <script> 태그에서
+    //React.createElement() 함수를 통해 생성하는 것을 확인 가능
+
+    //처음 Vanilla JS로 구현한 예제처럼
+    //버튼을 클릭할 때 마다 버튼 클릭 횟수가 올라가게끔
+    //구현을 해야한다.
+    //state를 통해 구현할 것이고
+    //두 개의 방법이 존재한다.
+
+    //Vanilla JS에서 HTML Element 내부의 텍스트를
+    //바꾸려고 했을 때 아래와 같은 방법을 사용했었다.
+
+    //span.innerText = `버튼 클릭 횟수 : ${Counter}`;
+
+    //JSX 문법으로 작성한 코드에 변수를 전달할 때는
+    //아래와 같은 형식으로 작성하면 된다.
+
+    let Counter = 0;
+
+    const BtnClickCount = () => {
+        Counter = Counter + 1;
+        ReactDOM.render(<Container />, root);
+    }
+
+    const Container = () => {
+        return (
+        <div>
+            <h4>Click Here 👇</h4>
+            <button onClick={ BtnClickCount }>Click!</button>
+            <div>버튼 클릭 횟수 : {Counter}</div>
+        </div>
+        );
+        //변수 Counter의 값을 바꾸면
+        //버튼 클릭 횟수 : 'number'의 숫자 값도 따라 바뀌는 것을 확인 가능
+        //'button'의 'onClick' prop의 값으로 BtnClickCount 함수 전달
+        //버튼을 클릭해도, 버튼 클릭 횟수가 올라가지는 않는다.
+        //console.log(Counter)로 확인해보면
+        //button의 onClick prop에 전달된 BtnClickCount 함수는
+        //문제없이 정상적으로 동작하는 것을 확인할 수 있다.
+
+        //eventListener는 정상적으로 동작하지만
+        //UI가 업데이트 되지 않아서 발생하는 문제
+
+        //Container를 웹 페이지에 랜더링할 때
+        //변수 Counter의 값은 0이다.
+        //아무리 우리가 버튼을 클릭해서 BtnClickCount 함수를 호출하고
+        //변수 Counter의 값을 올려도, 새로고침이 없기에
+        //웹 페이지에 나타나는 '버튼 클릭 횟수 : {Counter}'에서
+        //Counter의 초기 값이 0이기에, 웹 페이지에 나오는
+        //'버튼 클릭 횟수 : 0'도 그대로이다.
+
+        //그리고 이는 BtnClickCount 함수를 호출할 때
+        //Container를 root 요소에 다시 Rendering을 하는 것으로
+        //버튼 클릭 횟수가 올라가지 않던 문제가 해결됐다.
+    };
+
+    ReactDOM.render(<Container />, root);
+</script>
+</html>
