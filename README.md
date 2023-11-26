@@ -13,10 +13,9 @@
 - **[React 공식 사이트](https://ko.legacy.reactjs.org/)**
 - **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)**
 <br/>
-<br/>
 <hr/>
 
-### 1. React 기초
+### 1. React : `Basic`
 - **📆 기간: 2023.11.16 ~ 2023.11.22**
 
 - **📃 정리 내용**
@@ -28,7 +27,7 @@
 
 ---
 
-### React : `state`
+### 2. React : `state`
 - **📆 기간: 2023.11.24 ~ 2023.00.00**
 
 - **📃 정리 내용**
