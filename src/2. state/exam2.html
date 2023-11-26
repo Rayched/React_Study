@@ -102,7 +102,21 @@
             *   정확히 어떤 기능을 하는 함수인지 알아야 할 것 같다.
             * )
            */
+          /**
+           * 2023.11.25 추가본
+           * 
+           * 데이터, Counter(버튼 클릭 횟수)가 바뀔 때 마다
+           * Component를 Rerendering하고, UI를 새로고침한다
+           * 
+           * 물론 ReactJS는 Component 전체를 새로고침 하지 않고
+           * Data가 바뀐 곳만 업데이트한다.
+           * 
+           * 'state'가 바뀌면, Rerendering이 일어난다.
+          */
         };
+
+        console.log("render");
+        console.log(Counter);
 
         return (
             <div>
