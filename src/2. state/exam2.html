@@ -22,97 +22,13 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel">
-    /** 
-     * 앞에서 배웠던 Re_Rendering하는 방식은
-     * Rendering을 실행하는 함수를 매번 호출해서
-     * Re_Rendering을 발생시키는 방식이었다
-     * 
-     * 이번에 다룰 것은
-     * React.js 어플 내에서 date를 보관하고
-     * 자동으로 Re_Rendering하는 방법에 대한 것이다.
-    */
-
     const root = document.getElementById("root");
 
     const App = () => {
         const [Counter, setCounter] = React.useState(0);
-        /** 
-         * 'console.log(data)'
-         * return == [undefined, function()](2)(array)
-         * 
-         * undefined == 변수 data, 초기 값 지정 가능
-         *  - 앞에서 사용했던 변수 Counter와 같음.
-         * function() == 변수 data의 값을 바꾸려고 할 때 사용하는 함수
-         *  - 앞에서 사용했던 버튼이 클릭될 때마다 실행된
-         *    함수 BtnClickCount와 같은 역할을 한다.
-         * 
-         * 'React.useState(0)' 함수는
-         * '버튼 클릭 횟수'의 초기값과 (0, Counter)
-         * 초기값을 수정할 때 실행될 임의의 함수를 담은 배열을 return한다
-         * return value == [0, function]
-         * 
-         * 그리고 return된 값을 배열 구조 분해 할당을 활용해서
-         * 변수 Counter와 setCounter에 각각 따로따로 저장한다.
-        */
 
         const BtnClickCount = () => {
             setCounter(Counter + 1);
-            /*
-                'useState()' 함수의 결과로 return된
-                ModifyData() 함수는 앞에서 다뤘던
-                변수 Counter의 값을 변경하고
-                Re_Rendering하는 기능이 담겨있다.
-
-                해당 함수의 인자로 임의의 값을 전달하고
-                버튼을 클릭해서 event를 발생시키면
-                버튼 클릭 횟수의 값이 방금 전달했던 값으로
-                변경되는 것을 확인할 수 있다.
-
-                Counter = Counter + 1;
-                ReactDOM.render(<App />, root);
-            */
-           /** 
-            * setCounter() 함수는 인자로 'Counter + 1'을 전달받는다.
-            * 그리고 웹 페이지에서 버튼을 클릭하면
-            * event가 발생시킨다. (BtnClickCount 함수 실행)
-            * 
-            * 그러면 setCounter 함수는 Counter의 초기 값인 0에 1을 더한 값인
-            * 숫자 '1'을 변수 Counter에 저장하고
-            * React Component를 Re_Rendering한다.
-            * (
-            *   [버튼 클릭 횟수 : 'n']에서 업데이트할 부분은
-            *   숫자 'n'이므로 해당 부분만 업데이트된다.
-            * )
-            * 
-            * 변수 Counter를 const로 선언했기 때문에
-            * 값이 수정되지 않을 것이라고 생각할 수 있지만
-            * 다시 한번 생각해보자면
-            * 변수 Counter의 값은 useState() 결과로 return된
-            * 배열의 0번 index 요소이고
-            * 배열 자체를 수정하는 것이 아니라
-            * 배열 요소에 담긴 data를 업데이트하므로 문제되지 않는다.
-            * 
-            * 처음 예시로 제시했던 Re_Rendering을 진행하는 코드와
-            * 방금 작성한 Re_Rendering을 진행하는 코드
-            * 두 가지 코드를 비교하면 후자 쪽의 소스코드가
-            * 좀 더 깔끔하고 쉬워졌다는 것을 알 수 있다.
-            * 
-            * (
-            *   이를 이해하려면 'React.useState()' 함수가 
-            *   정확히 어떤 기능을 하는 함수인지 알아야 할 것 같다.
-            * )
-           */
-          /**
-           * 2023.11.25 추가본
-           * 
-           * 데이터, Counter(버튼 클릭 횟수)가 바뀔 때 마다
-           * Component를 Rerendering하고, UI를 새로고침한다
-           * 
-           * 물론 ReactJS는 Component 전체를 새로고침 하지 않고
-           * Data가 바뀐 곳만 업데이트한다.
-           * 
-           * 'state'가 바뀌면, Rerendering이 일어난다.
-          */
         };
 
         console.log("render");
