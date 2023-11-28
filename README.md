@@ -35,4 +35,12 @@
 
 	- **[`state` 예제 2 (Re_Renderin 구현하기 ver 2) (미완성)](/Report/2023.11.27_Monday/React_state_exam2.md)**
 		- 조금 더 쉽고 간편한 형태로 `Re_rendering` 구현하기
+
 ---
+
+### 3. React : `inputs and state`
+- **💻 단위 변환 앱 구현하기**
+	- **📆 작업 기간: 2023.11.28 ~ 2023.11.00**
+	- **[💻 Source Code](/src/2.%20state/UnitConversion.html)**
+	- **[📃 작업 일지](/Report/UnitConversion.md)**
+
