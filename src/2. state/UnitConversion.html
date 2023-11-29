@@ -17,7 +17,7 @@
     const root = document.getElementById("root");
 
     function App(){
-        const [minute, setMinute] = React.useState();
+        const [minute, setMinute] = React.useState(0);
         //useState는 'state'와 'state'를 변경할 수 있는 함수
         //두 개로 이루어진 하나의 배열을 return한다.
         //그 후 return된 배열을 minute과 setMinute 변수에
@@ -25,6 +25,15 @@
 
         const onChange = (event) => {
             setMinute(event.target.value);
+        };
+
+        const Reset = () => {
+            setMinute(0);
+            /* 
+             * state의 현재 값은 'minute'이라는 input 요소의 value이다.
+             * state를 컨트롤하는 setMinute() 함수의 인자로 0을 전달
+             * state의 값을 0으로 변경한다.
+             */
         };
 
         return (
@@ -40,11 +49,16 @@
                         onChange={onChange}
                     />
                 </div>
-                <h4>입력한 값을 '시/hour' 단위로 변환합니다. : {minute}</h4>
                 <div>
                     <label htmlFor="hour">Hour</label>
-                    <input id="hour" placeholder="Hour" type="number"/>
+                    <input 
+                        id="hour" 
+                        placeholder="Hour" 
+                        type="number"
+                        value={minute / 60}
+                    />
                 </div>
+                <button onClick={Reset}>RESET</button>
             </div>
         );
     }
