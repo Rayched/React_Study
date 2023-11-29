@@ -17,11 +17,9 @@
     const root = document.getElementById("root");
 
     function App(){
-        const [minute, setMinute] = React.useState(0);
-        //useState는 'state'와 'state'를 변경할 수 있는 함수
-        //두 개로 이루어진 하나의 배열을 return한다.
-        //그 후 return된 배열을 minute과 setMinute 변수에
-        //각각 따로따로 할당한다.
+        const [minute, setMinute] = React.useState(0); //minute 입력 관련
+        //const [hour, setHour] = React.useState(0); //hour 입력 관련
+        const [Convert, setConvert] = React.useState(false); //입력 전환 기능 관련
 
         const onChange = (event) => {
             setMinute(event.target.value);
@@ -36,6 +34,42 @@
              */
         };
 
+        const Conversion = () => {
+            /**
+             * [CONVERSION] 버튼을 클릭하면
+             * 'minute'이 비활성화되고, 'hour'가 활성화되는 기능 추가
+             * 한 번 더 클릭하면, 'hour'를 비활성화하고
+             * 'minute'이 활성화가 되야한다.
+             */ 
+
+            //setConvert(!Convert);
+            /** 
+             * 'state'를 참조하는 변수 Convert의 초기 값은 false이다.
+             * [CONVERSION] 버튼을 클릭하면
+             * eventListener로 Conversion 함수가 실행된다.
+             * 해당 함수는 'state'를 변경할 수 있는 setConvert()를 호출한다.
+             * 
+             * 이때 인자로 '!Convert'를 전달했기 때문에
+             * Convert의 현재 값과 반대되는 값을 state의 값으로 설정한다.
+             * (false → true / true → false)
+             * 그리고 이는 state를 참조하는 변수 Convert에도 반영된다.
+             * 
+             * 다만 이전 장에서 'state'를 조작하는 함수의 인자로
+             * 변수를 전달하는 것은 별로 좋은 방식은 아니다
+             * 변수는 'state'를 참조하는 것이지.
+             * 'state' 자체가 아니기도 하고
+             * 외부에서 변수의 값을 변경한다면 
+             * 우리가 원하는 것과는 전혀 다른 결과를 볼 수도 있기 때문에
+             * 
+             * 임의의 함수를 Callback 함수의 형태로 전달해주자.
+             * 해당 함수는 'state'를 직접적으로 참조하기 때문에
+             * 즉, 안정성이라는 측면에서 변수를 전달했을 때보다는
+             * 안정적이라고 할 수 있다.
+            */
+           setConvert((current) => !current);
+           console.log(Convert);
+        };
+
         return (
             <div>
                 <h2>시간 변환 (시 / 분)</h2>
@@ -47,6 +81,7 @@
                         type="number"
                         value={minute}
                         onChange={onChange}
+                        disabled={Convert === true}
                     />
                 </div>
                 <div>
@@ -56,9 +91,11 @@
                         placeholder="Hour" 
                         type="number"
                         value={minute / 60}
+                        disabled={Convert === false}
                     />
                 </div>
                 <button onClick={Reset}>RESET</button>
+                <button onClick={Conversion}>CONVERSION</button>
             </div>
         );
     }
