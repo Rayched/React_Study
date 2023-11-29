@@ -17,16 +17,15 @@
     const root = document.getElementById("root");
 
     function App(){
-        const [minute, setMinute] = React.useState(0); //minute 입력 관련
-        //const [hour, setHour] = React.useState(0); //hour 입력 관련
+        const [InputValue, setInputValue] = React.useState(0); //minute 입력 관련
         const [Convert, setConvert] = React.useState(false); //입력 전환 기능 관련
 
         const onChange = (event) => {
-            setMinute(event.target.value);
+            setInputValue(event.target.value);
         };
 
         const Reset = () => {
-            setMinute(0);
+            setInputValue(0);
             /* 
              * state의 현재 값은 'minute'이라는 input 요소의 value이다.
              * state를 컨트롤하는 setMinute() 함수의 인자로 0을 전달
@@ -67,7 +66,6 @@
              * 안정적이라고 할 수 있다.
             */
            setConvert((current) => !current);
-           console.log(Convert);
         };
 
         return (
@@ -79,9 +77,9 @@
                         id="minute" 
                         placeholder="Minute" 
                         type="number"
-                        value={minute}
+                        value={Convert ? (InputValue * 60) : InputValue}
                         onChange={onChange}
-                        disabled={Convert === true}
+                        disabled={Convert}
                     />
                 </div>
                 <div>
@@ -90,8 +88,9 @@
                         id="hour" 
                         placeholder="Hour" 
                         type="number"
-                        value={minute / 60}
-                        disabled={Convert === false}
+                        value={Convert ? InputValue: (InputValue / 60)}
+                        onChange={onChange}
+                        disabled={!Convert}
                     />
                 </div>
                 <button onClick={Reset}>RESET</button>
@@ -99,6 +98,12 @@
             </div>
         );
     }
+    /** 
+     * 입력 창 전환 기능까지 추가 완료했지만
+     * 아직 hour 입력 창에 숫자를 입력할 수 없다.
+     * 
+     * 
+    */
 
     ReactDOM.render(<App />, root);
 </script>
