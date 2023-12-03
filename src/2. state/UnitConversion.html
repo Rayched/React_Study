@@ -1,5 +1,8 @@
-<!-- 단위 변환 앱 구현하기 -->
+<!-- 
+    단위 변환 앱 구현하기 
 
+    'state' 바탕으로 UI 변경하기
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +19,7 @@
 <script type="text/babel">
     const root = document.getElementById("root");
 
-    function App(){
+    function MinuteToHour(){
         const [InputValue, setInputValue] = React.useState(0); //minute 입력 관련
         const [Convert, setConvert] = React.useState(false); //입력 전환 기능 관련
 
@@ -75,6 +78,14 @@
             * [CONVERSION] 버튼을 클릭해서 HOUR 입력 상태로 바꾸면
             * minute 탭에 입력한 숫자 60이 hour 입력창에 자동으로 입력된다
             * hour => 60, minute = 3600
+            * 
+            * 입력창에 입력된 값을 지우는 Reset 함수를
+            * CONVERSION 버튼을 클릭했을 때 실행되는 Conversion 함수에서
+            * 호출하도록 로직을 수정하였음.
+            * 
+            * 이제 기존 입력 창에 입력된 값이 CONVERSION 버튼으로
+            * 다른 입력 창을 바꿨을 때 기존 입력 창에 입력된 값이
+            * 다른 입력 창에 그대로 따라가지 않게됐다.
            */
             Reset();
             setConvert((current) => !current);
@@ -82,7 +93,7 @@
 
         return (
             <div>
-                <h2>시간 변환 (시 / 분)</h2>
+                <h3>시간 변환 (시 Hour / 분 Minute)</h3>
                 <div>
                     <label htmlFor="minute">Minute</label>
                     <input 
@@ -105,10 +116,14 @@
                         disabled={!Convert}
                     />
                 </div>
-                <button onClick={Reset}>RESET</button>
-                <button onClick={Conversion}>CONVERSION</button>
+                <div>
+                    <button onClick={Reset}>RESET</button>
+                    <button onClick={Conversion}>{Convert ? "Minute 입력" : "Hour 입력"}</button>
+                </div>
             </div>
         );
+        //현재 입력 모드가 Minute인지 아니면 Hour인지 확인할 수 있는
+        //형태로 수정
     }
     /** 
      * 입력 창 전환 기능까지 추가 완료했지만
@@ -117,11 +132,87 @@
      * 입력창에 입력된 값을 지우는 Reset 함수를
      * CONVERSION 버튼을 클릭했을 때 실행되는 Conversion 함수에서
      * 호출하도록 로직을 수정하였음.
-     * 
-     * 이제 기존 입력 창에 입력된 값이 CONVERSION 버튼으로
-     * 다른 입력 창을 바꿨을 때 기존 입력 창에 입력된 값이
-     * 다른 입력 창에 그대로 따라가지 않게됐다.
     */
+
+    const MeterToKiloMeter = () => {
+        const [InputValue, setInputValue] = React.useState(0); 
+        const [Convert, setConvert] = React.useState(false);
+
+        const onChange = (event) => {
+            setInputValue(event.target.value);
+        };
+
+        const Reset = () => {
+            setInputValue(0);
+        };
+
+        const Conversion = () => {
+            Reset();
+            setConvert((current) => !current);
+        };
+
+        return (
+            <div>
+                <h3>거리 변환기 (m - km)</h3>
+                <div>
+                    <label htmlFor="meter">Meter</label>
+                    <input 
+                        id="meter" 
+                        placeholder="m" 
+                        type="number"
+                        value={Convert ? (InputValue * 1000) : InputValue}
+                        onChange={onChange}
+                        disabled={Convert}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="KiloMeter">KiloMeter</label>
+                    <input 
+                        id="KiloMeter" 
+                        placeholder="km" 
+                        type="number"
+                        value={Convert ? InputValue: (InputValue / 1000)}
+                        onChange={onChange}
+                        disabled={!Convert}
+                    />
+                </div>
+                <div>
+                    <button onClick={Reset}>RESET</button>
+                    <button onClick={Conversion}>{Convert ? "Meter 입력" : "KiloMeter 입력"}</button>
+                </div>
+            </div>
+        );
+    }
+
+    const App = () => {
+        const [Index, setIndex] = React.useState("0");
+
+        const onSelect = (event) => {
+            setIndex(event.target.value);
+        }
+
+        console.log(`Rendering된 Component : ${Index}`);
+
+        return (
+            <div>
+                <h2>단위 변환기</h2>
+                <select value={Index} onChange={onSelect}>
+                    <option value="0">Convertor Select</option>
+                    <option value="1">시간 변환기 (Minute/Hour)</option>
+                    <option value="2">거리 변환기 (m/km)</option>
+                </select>
+                <hr/>
+                { Index === "0" ? "단위 변환기를 선택해주세요.": null}
+                { Index === "1" ? <MinuteToHour /> : null }
+                { Index === "2" ? <MeterToKiloMeter /> : null}
+                <hr/>
+            </div>
+        );
+        //state를 활용해서 Rendering되는 요소 선택하기
+        //select 태그로 만든 선택지의 value에 임의의 index를 입력하고
+        //선택한 option의 index에 따라 각기 다른 Component를
+        //랜더링하도록 logic을 수정하였다.
+    };
 
     ReactDOM.render(<App />, root);
 </script>
