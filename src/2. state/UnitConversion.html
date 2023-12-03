@@ -65,7 +65,19 @@
              * 즉, 안정성이라는 측면에서 변수를 전달했을 때보다는
              * 안정적이라고 할 수 있다.
             */
-           setConvert((current) => !current);
+           /**
+            * 2023.12.03 일요일
+            * 
+            * CONVERSION 버튼을 클릭하면
+            * 기존 값이 그대로 변환된 탭에 입력된다
+            * 
+            * minute => 60 입력한 상태 / hour = 1
+            * [CONVERSION] 버튼을 클릭해서 HOUR 입력 상태로 바꾸면
+            * minute 탭에 입력한 숫자 60이 hour 입력창에 자동으로 입력된다
+            * hour => 60, minute = 3600
+           */
+            Reset();
+            setConvert((current) => !current);
         };
 
         return (
@@ -102,7 +114,13 @@
      * 입력 창 전환 기능까지 추가 완료했지만
      * 아직 hour 입력 창에 숫자를 입력할 수 없다.
      * 
+     * 입력창에 입력된 값을 지우는 Reset 함수를
+     * CONVERSION 버튼을 클릭했을 때 실행되는 Conversion 함수에서
+     * 호출하도록 로직을 수정하였음.
      * 
+     * 이제 기존 입력 창에 입력된 값이 CONVERSION 버튼으로
+     * 다른 입력 창을 바꿨을 때 기존 입력 창에 입력된 값이
+     * 다른 입력 창에 그대로 따라가지 않게됐다.
     */
 
     ReactDOM.render(<App />, root);
