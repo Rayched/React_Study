@@ -4,7 +4,8 @@
 # 📔 Reference
 
 - **[ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lobby)**
-- **[예제 파일](/src/2.%20state/exam2.html)**
+- **[예제 ver2](/React_Basic/Exam/2.%20state/ButtonClick/exam2.html)**
+- **[예제 ver3](/React_Basic/Exam/2.%20state/ButtonClick/exam3.html)**
 
 ---
 ### 복습
