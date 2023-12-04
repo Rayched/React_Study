@@ -4,7 +4,7 @@
 
 - **📔 Reference**
     - **[ReactJS로 영화 웹 서비스 만들기 / 3.0 Understanding State](https://nomadcoders.co/react-for-beginners/lobby)**
-    - **[Source Code](/React_Basic/Exam/2.%20state/ButtonClick/exam1.html)**
+    - **[Source Code](/Exam/2.%20state/ButtonClick/exam1.html)**
 ---
 
 ### 💻 기존 코드
