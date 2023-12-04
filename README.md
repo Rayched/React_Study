@@ -12,7 +12,8 @@
 ### 📃 Reference
 - **[React 공식 사이트](https://ko.legacy.reactjs.org/)**
 - **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)**
-- **[Blog : React Box]()**
+- **[Blog: React Exam Code's](https://rayched.github.io/)**
+	- ReactJS 예제 모아놓은 Blog (Github Page)
 <br/>
 <hr/>
 
