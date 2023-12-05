@@ -1,5 +1,3 @@
 .obsidian/
 blog/node_modules/
-blog/package-lock.json
-blog/package.json
 blog/build/
