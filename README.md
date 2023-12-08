@@ -53,6 +53,6 @@
 - **💻 `prop` 예제 (단위 변환 앱 ver2)**
 	- **📆 작업 기간: 2023.12.08 ~ 2023.12.00**
 	- **[예제 Source Code](/Exam/3.%20prop/UnitConversion_2.html)**
-	- **[예제 작업 일지]()**
+	- **[React - prop](/React_Theory/React_props.md)**
 
 ---

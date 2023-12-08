@@ -9,6 +9,7 @@
 </body>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     //단위 변환 App ver2
@@ -26,8 +27,7 @@
      * 두 자식 Component가 부모 Component인 App의 데이터를
      * 참조할 수 있는 형태로 logic을 수정할 것이다.
     */
-
-    const Btn = (/*props(Before)*/{ BtnText, Change_BtnName }) => {
+    const Btn = (/*props(Before)*/{ BtnText, Change_BtnName, fontSize }) => {
         //Component의 인자 == prop
         //Btn으로부터 전달받는 property
         //매개변수 props == 일종의 Object
@@ -41,7 +41,6 @@
 
         //물론 부모 Component에서 property 이름을 변경하면
         //이를 참조하는 자식 Component에서도 똑같이 바꿔야한다.
-        console.log(BtnText, "가 랜더링 됐습니다.");
         return (
             <button
                 onClick={ Change_BtnName }
@@ -51,11 +50,12 @@
                     padding: "10px 20px",
                     borderRadius: 10,
                     border: 0,
-                    margin: "5px"
+                    margin: "5px",
+                    fontSize: fontSize
                 }}
             >
                 {
-                    /* props.BtnName (Before)*/
+                    //props.BtnName (Before)
                     BtnText //After
                 }
             </button>
@@ -71,6 +71,7 @@
          * 다른 Component에서 해당 Component를 호출해서
          * style을 재사용할 수 있는 방법이 존재한다.
         */
+       console.log(props)
     };
 
     function ConfirmBtn(){
@@ -92,12 +93,32 @@
      * 물론 이러한 문제는 'React.memo()'를 통해서
      * 컴포넌트가 Re-rendering될 때 다시 그려지는 Component와
      * 다시 그릴 필요가 없는 Component를 우리가 지정할 수 있다.
+     * 
+     * ---
+     * 'React.memo()'
+     * 'const Memorised_Btn = React.memo(function Btn(props){})'
+     * 'React.memo()' == 고차 컴포넌트
+     * 
+     * Component가 동일한 props로 동일한 결과를 rendering한다면
+     * React.memo를 호출, 결과를 Memoizing하도록 래핑하여
+     * 경우에 따라 성능 향상을 누릴 수 있다.
+     * 즉, React는 컴포넌트를 랜더링하지 않고
+     * 앞에서 랜더링된 결과를 재사용하기도 한다는 것이다.
+     * 
+     * 'React.memo()'는 'props' 변화에만 영향을 주고
+     * 인자로 전달된 함수 Component에서 useState, useReducer 등을 사용한다면
+     * 'state', 'context'가 변할 때 Re-rendering된다.
+     * 
+     * React 공식 문서 참조
+     * ---
     */
 
-    const App = () => {
-        //부모 Component인 App에서 state가 바뀌면
-        //자식 Component인 Btn에 어떤 일이 발생하는 지 확인하기
+    Btn.propTypes = {
+        BtnText: PropTypes.string.isRequired,
+        fontSize: PropTypes.number,
+    };
 
+    const App = () => {
         const [BtnName, setBtnName] = React.useState("Save");
 
         const Change_BtnName = () => setBtnName("Return");
@@ -108,7 +129,14 @@
                     BtnText={ BtnName }
                     Change_BtnName={ Change_BtnName }
                 />
-                <Memorised_Btn BtnText="Continue" />
+                <Memorised_Btn 
+                    BtnText="Continue"
+                    fontSize={20}
+                />
+                <Memorised_Btn 
+                    BtnText="Reset"
+                    fontSize={20}
+                />
             </div>
         );
         /** 
@@ -146,6 +174,7 @@
          * 'React.memo()'(memo == memorise)를 통해
          * Re-rendering을 할 필요가 없는 요소를 지정할 수 있다.
         */
+       
     };
 
     /*
