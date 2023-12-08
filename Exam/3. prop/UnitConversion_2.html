@@ -27,7 +27,7 @@
      * 참조할 수 있는 형태로 logic을 수정할 것이다.
     */
 
-    const Btn = (/*props(Before)*/{ BtnName }) => {
+    const Btn = (/*props(Before)*/{ BtnText, Change_BtnName }) => {
         //Component의 인자 == prop
         //Btn으로부터 전달받는 property
         //매개변수 props == 일종의 Object
@@ -41,8 +41,10 @@
 
         //물론 부모 Component에서 property 이름을 변경하면
         //이를 참조하는 자식 Component에서도 똑같이 바꿔야한다.
+        console.log(BtnText, "가 랜더링 됐습니다.");
         return (
             <button
+                onClick={ Change_BtnName }
                 style={{
                     backgroundColor: "Green",
                     color: "White",
@@ -54,7 +56,7 @@
             >
                 {
                     /* props.BtnName (Before)*/
-                    BtnName //After
+                    BtnText //After
                 }
             </button>
         );
@@ -75,11 +77,38 @@
         return <button>Confirm</button>;
     }
 
+    const Memorised_Btn = React.memo(Btn);
+    /** 
+     * 기본적으로 'state'가 변경되면 Re-rendering이 이루어진다.
+     * 하지만 부모 컴포넌트와 연결된 자식 컴포넌트의 갯수가
+     * 한 100개 정도있다고 가정하면
+     * 
+     * 부모 Component의 state가 변경되면
+     * 해당 컴포넌트와 연결된 약 100개 정도의 자식 컴포넌트도
+     * 전부 다 Re-rendering된다.
+     * 이러면 우리가 개발한 웹 페이지의 로딩 속도가 느려지는 원인으로
+     * 작용하고, 사용자 입장에서는 굉장히 불편한 요소 중 하나가 될 것이다.
+     * 
+     * 물론 이러한 문제는 'React.memo()'를 통해서
+     * 컴포넌트가 Re-rendering될 때 다시 그려지는 Component와
+     * 다시 그릴 필요가 없는 Component를 우리가 지정할 수 있다.
+    */
+
     const App = () => {
+        //부모 Component인 App에서 state가 바뀌면
+        //자식 Component인 Btn에 어떤 일이 발생하는 지 확인하기
+
+        const [BtnName, setBtnName] = React.useState("Save");
+
+        const Change_BtnName = () => setBtnName("Return");
+
         return (
             <div>
-                <Btn BtnName="Save"/>
-                <Btn BtnName="Continue"/>
+                <Memorised_Btn 
+                    BtnText={ BtnName }
+                    Change_BtnName={ Change_BtnName }
+                />
+                <Memorised_Btn BtnText="Continue" />
             </div>
         );
         /** 
@@ -90,6 +119,32 @@
          * 
          * 같은 Btn Component를 사용해서 부모 Component인 App에서
          * 인자로 전달한 값("Save", "Continue")의 영향을 받는다.
+         * 
+         * 부모 컴포넌트에서 자식 Component를 호출할 때
+         * 전달한 BtnText, onClick은 단순한 property에 불과하다
+         * onClick을 썼다고해도 eventListener가 아닌
+         * 단순한 property에 불과하다
+         * 
+         * Btn 함수 Component의 매개변수 prop에
+         * string, number, boolean 같은 단순 값 외에도
+         * function을 인자, Object property로 전달할 수 있다.
+         * 
+         * 부모 Component에서 인자를 아무리 전달해도
+         * 이를 받은 자식 Component에서 사용하지 않으면
+         * 단순한 prop 객체의 property로만 남는다.
+         */
+        /** 
+         * [Save] 버튼을 클릭하면, 해당 버튼의 Text가
+         * 'Return'으로 바뀌면서 Re-rendering된다.
+         * state의 값이 바뀌었기 때문이다.
+         * 이 과정에서 값이 바뀌지 않은 Continue도
+         * Re-rendering이 되는 것을 확인할 수 있다.
+         * 
+         * 값이 바뀌면 re-rendering되는 것은 당연하지만
+         * 이 과정에서 굳이 re-rendering될 필요가 없는 요소도
+         * 같이 re-rendering이 되버린다.
+         * 'React.memo()'(memo == memorise)를 통해
+         * Re-rendering을 할 필요가 없는 요소를 지정할 수 있다.
         */
     };
 
