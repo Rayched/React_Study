@@ -1,6 +1,18 @@
 # [React] `props`
 
-### 3. `prop` - `types`
+### 📔 Reference
+>- **[ReactJS로 영화 웹 서비스 만들기 / 노마드 코더 Nomad Coders](https://nomadcoders.co/react-for-beginners/lobby)**
+>- **[Component와 Props](https://ko.legacy.reactjs.org/docs/components-and-props.html)**
+>- **[React 최상위 API/React.memo](https://ko.legacy.reactjs.org/docs/react-api.html#reactmemo)**
+>- **[PropTypes와 함께 하는 타입 검사](https://ko.legacy.reactjs.org/docs/typechecking-with-proptypes.html)**
+
+
+---
+## 1. `prop` 
+---
+## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기
+---
+## 3. `prop` 타입 지정하기
 
 ``` jsx
 function Btn({text, Change_BtnName, fontSize}){

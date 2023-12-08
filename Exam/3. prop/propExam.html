@@ -54,10 +54,7 @@
                     fontSize: fontSize
                 }}
             >
-                {
-                    //props.BtnName (Before)
-                    BtnText //After
-                }
+                { BtnText }
             </button>
         );
         /** 
@@ -114,6 +111,7 @@
     */
 
     Btn.propTypes = {
+        //Btn의 props가 받는 데이터의 타입을 검수한다.
         BtnText: PropTypes.string.isRequired,
         fontSize: PropTypes.number,
     };
