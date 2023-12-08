@@ -27,13 +27,20 @@
      * 참조할 수 있는 형태로 logic을 수정할 것이다.
     */
 
-    const Btn = (props) => {
+    const Btn = (/*props(Before)*/{ BtnName }) => {
         //Component의 인자 == prop
         //Btn으로부터 전달받는 property
         //매개변수 props == 일종의 Object
         //우리가 App Component에서 Btn 함수를 호출할 때
         //인자로 전달한 것들을 property로 가진 Object이다.
-        console.log(props);
+        //여기서 prop은 object이기 때문에
+        //'props'의 형태가 아니라 
+        //'{}', object의 형태로 설정할 수도 있다.
+        //이렇게 작성하면 'props.BtnName'을 쓸 필요없이
+        //property 이름만 사용해서 인자로 전달된 값을 참조 가능
+
+        //물론 부모 Component에서 property 이름을 변경하면
+        //이를 참조하는 자식 Component에서도 똑같이 바꿔야한다.
         return (
             <button
                 style={{
@@ -45,7 +52,10 @@
                     margin: "5px"
                 }}
             >
-                {props.BtnName}
+                {
+                    /* props.BtnName (Before)*/
+                    BtnName //After
+                }
             </button>
         );
         /** 
