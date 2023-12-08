@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React - prop 예제</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    //단위 변환 App ver2
+    //'prop' 적용 version
+
+    /** 
+     * prop == 부모 Component로부터 자식 Component에게 데이터를
+     *          보낼 수 있게 해주는 방법
+     * 이전에 개발한 코드 (ver1)에서
+     * 자식 component인 MinuteToHour와 MeterToKilloMeter는
+     * 부모 Component인 App의 데이터를 필요로 하지 않는다.
+     * 즉, 독립적으로 존재할 수 있다는 것이다
+     * 
+     * 이번에 구현하는 것은 prop을 활용해서
+     * 두 자식 Component가 부모 Component인 App의 데이터를
+     * 참조할 수 있는 형태로 logic을 수정할 것이다.
+    */
+
+    const Btn = (props) => {
+        //Component의 인자 == prop
+        //Btn으로부터 전달받는 property
+        //매개변수 props == 일종의 Object
+        //우리가 App Component에서 Btn 함수를 호출할 때
+        //인자로 전달한 것들을 property로 가진 Object이다.
+        console.log(props);
+        return (
+            <button
+                style={{
+                    backgroundColor: "Green",
+                    color: "White",
+                    padding: "10px 20px",
+                    borderRadius: 10,
+                    border: 0,
+                    margin: "5px"
+                }}
+            >
+                {props.BtnName}
+            </button>
+        );
+        /** 
+         * 이런 식으로 버튼에 css style을 설정해줄 수 있다.
+         * 
+         * 단, 버튼의 갯수가 늘어날 때마다 매번 이런 식으로
+         * Component의 style을 설정하는 것은 번거롭다
+         * 물론 더 좋은 방법이 존재한다.
+         * 
+         * 지금 설정한 style을 저장해둔 Component를 하나 만들고
+         * 다른 Component에서 해당 Component를 호출해서
+         * style을 재사용할 수 있는 방법이 존재한다.
+        */
+    };
+
+    function ConfirmBtn(){
+        return <button>Confirm</button>;
+    }
+
+    const App = () => {
+        return (
+            <div>
+                <Btn BtnName="Save"/>
+                <Btn BtnName="Continue"/>
+            </div>
+        );
+        /** 
+         * <Btn BtnName="Save"/>로 작성한 것은
+         * 단순히 Btn이라는 함수를 호출하는 것과 같다.
+         * Btn(BtnName: "Save");
+         * 즉, 위의 코드와 같다는 것이다.
+         * 
+         * 같은 Btn Component를 사용해서 부모 Component인 App에서
+         * 인자로 전달한 값("Save", "Continue")의 영향을 받는다.
+        */
+    };
+
+    /*
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+
+    React18 버전에서 ReactDOM.render()는 더이상 지원하지 않는다고 한다.
+    대신 ReactDOM 객체의 createRoot() 함수를 통해 root 요소를 지정한다
+    */
+
+   const root = ReactDOM.createRoot(document.getElementById("root"));
+   root.render(<App />);
+</script>
+</html>
