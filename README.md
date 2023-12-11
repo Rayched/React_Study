@@ -44,7 +44,7 @@
 ### 3. React : `inputs and state`
 - **💻 단위 변환 앱 구현하기**
 	- **📆 작업 기간: 2023.11.28 ~ 2023.12.02**
-	- **[💻 Source Code](/Exam/2.%20state/UnitConversion.html)**
+	- **[💻 Source Code](/React_Study/Exam/2.%20state/UnitConversion.html)**
 	- **[📃 작업 일지](/Report/UnitConversion.md)**
 
 ---

@@ -42,17 +42,19 @@ function App(){
 }
 ```
 
-- 위의 예제처럼 'text', 'fontSize' Property에 잘못된 값을 전달했다고 가정해보자.
+- 위의 예제처럼 `text`, `fontSize` Property에 잘못된 값을 전달했다고 가정해보자.
+
 - 물론 결과적으로 Error가 발생하지는 않지만 <br/>
     우리가 원하는 형태의 Component가 return되지는 않는다.
-- 즉, 코드를 작성하는 중에 실수를 했고 이를 웹 페이지가 랜더링된 후에 알았다는 것이다.
+- 즉, 코드를 작성하는 중에 실수를 했고 이를 웹 페이지가 Rendering된 후에 알았다는 것이다.
 
 - 하지만 여기서 'text'와 'fontSize'에 들어갈 data의 type이 지정됐다면 어떨까?
-- 개발자인 우리는 'text'에 `string`이, 'fontSize'에 `number`가 들어가야 하는 것을 <br/> 알고있지만 `ReactJS`는 이를 모른다.
-- 다행히도 React는 `PropTypes`라는 것이 존재한다.
+- 개발자인 우리는 'text'에 `string`이, 'fontSize'에 `number`가 들어가야 하는 것을 <br/> 
+	알고 있지만 `ReactJS`는 이를 모른다.
+- 다행히 React는 `PropTypes`이라는 자체 타입 검사 기능이 존재한다.
 
 > `React v15.5`부터 `React.PropTypes`가 다른 패키지로 이동했다고 한다. <br/>
-> 대신 **[`prop-types` 라이브러리](https://www.npmjs.com/package/prop-types)**를 이용하면 된다고 한다. <br/><br/>
+> 대신 **[`prop-types` 라이브러리](https://www.npmjs.com/package/prop-types)**  이용하면 된다고 한다. <br/><br/>
 >**[PropTypes와 함께 하는 타입 검사](https://ko.legacy.reactjs.org/docs/typechecking-with-proptypes.html) 참조 / React 공식 문서**
 
 ---
@@ -75,10 +77,10 @@ function App(){
     );
 }
 ```
-- `propTypes`를 통해 `text`와 `fontSize`에 저장되는 값의 타입을 <br/>
-    각각 `string`, `number`로 지정하였다.
-- 이후 `App` 컴포넌트에서 `Btn` 함수에 전달될 인자의 값을 위와 같이 전달
-- Component는 문제없이 랜더링되지만 아래와 같은 경고 메시지가 출력된다.
+- `propTypes`을 통해 `text`와 `fontSize`에 저장되는 값의 타입을 <br/>
+    각각 `string`, `number` 타입으로 지정하였다.
+- 이후 `App Component`에서 `Btn` 함수에 전달될 인자의 값을 위와 같이 전달
+- Component는 문제 없이 Rendering되지만 아래와 같은 경고 메시지가 출력 된다.
 
 ```
 react-dom.development.js:73 Warning: 
@@ -87,7 +89,8 @@ supplied to `Btn`, expected `number`
 ```
 
 - 앞에서 `prop`의 `type`을 `text: string`, `fontSize: number`로 지정했지만 <br/>
-  Btn 함수를 호출할 때, `text`의 값을 숫자 20, `fontSize`의 값을 문자열 "Hello"로 전달하였기 때문에 타입이 불일치하다는 경고를 하고있다.
+  Btn 함수를 호출할 때, `text`의 값을 숫자 20, `fontSize`의 값을 문자열 **"Hello"** <br/>
+   전달하였기 때문에 타입이 불일치 하다는 경고 메시지가 출력 됐다.
 
 - `text`, `fontSize`의 값을 propTypes에서 지정한 타입과 일치하게 수정해보자.
 
