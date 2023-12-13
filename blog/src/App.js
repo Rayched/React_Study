@@ -1,13 +1,16 @@
 //App Component
+import React from 'react';
 
 function App() {
+  const [BtnCounter, setValue] = React.useState(0);
+  const onClick = () => setValue((prev) => prev + 1);
+
+  console.log("render")
   return (
-    <div className="App">
-      <h4>Hello Everyone</h4>
-      <p>ReactJS 강의를 들으면서 개발했던 예제들을 모아둔 블로그입니다.</p>
-      <div className="GitRepositoryURL">
-        <a href="https://github.com/Rayched/React_Study">'React_Study' / Project Git Repository</a> 
-      </div>
+    <div>
+      <h4>Click Here 👇</h4>
+      <button onClick={onClick}>Click !</button>
+      <h4>버튼 클릭 횟수 : {BtnCounter}</h4>
     </div>
   );
 }

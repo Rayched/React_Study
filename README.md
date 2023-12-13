@@ -1,58 +1,49 @@
 # React_Study
 
-`ReactJS`를 공부한 내용을 (단순 정리, Source Code) Backup 해두는 Git Repository 입니다. <br/>
-아래는 공부할 때 들었던 강의와 참고하면 좋을 사이트들을 정리해놨습니다.
+`ReactJS` 공부 내용을 (단순 정리, Source Code) Backup 해두는 Git Repository 입니다. <br/>
 
-### 📔 참고한 강의
+**[Github Repository](https://github.com/Rayched/React_Study)** <br/>
+**[Tistory Blog](https://rclogstorage.tistory.com/)**
 
-- **[ReactJS로 영화 웹 서비스 만들기 / 노마드 코더 Nomad Coders](https://nomadcoders.co/react-for-beginners/lobby)**
-- **[처음 만난 리액트 / Inflearn](https://inf.run/YehVc)**
+## 📔 Reference
 
+> **[ReactJS로 영화 웹 서비스 만들기 / Nomad Coders](https://nomadcoders.co/react-for-beginners/lobby)** <br/>
+> **[처음 만난 React / 인프런](https://inf.run/YehVc)** <br/>
+> **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)** <br/>
 
-### 📃 Reference
-- **[React 공식 사이트](https://ko.legacy.reactjs.org/)**
-- **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)**
-- **[Blog: React Exam Code's](https://rayched.github.io/)**
-	- ReactJS 예제 모아놓은 Blog (Github Page)
-<br/>
-<hr/>
+---
+## 1. React Basic
 
-### 1. React : `Basic`
+### React 이론
 
-- **📃 정리 내용**
-	- **[라이브러리, 프레임워크, UI](https://rclogstorage.tistory.com/122)**
-	- **[React의 정의](/React_Theory/React_정의.md)**
-	- **[React 개발 환경 설정](/React_Theory/React_개발_환경_설정.md)**
-	- **[React Component 생성 방법](/React_Theory/React_Component_생성_방법.md)**
-		- `React.createElement()`, `ReactDOM.render()`
-	- **[`JSX`(미완성)]()**
+- **[React의 정의](/React_Theory/React_정의.md)**
+- **[React 개발 환경 설정](/React_Theory/React_개발_환경_설정.md)**
+- **[React 맛보기]()**
+- **[JSX](/React_Theory/React_JSX.md)**
+- **[state](/React_Theory/React_State.md)**
+- **[prop](/React_Theory/React_props.md)**
 
 ---
 
-### 2. React : `state`
-- **📃 정리 내용**
-	- **[`state`의 정의 (미완성)]()**
-- **💻 Report**
-	- **[`state` 예제 1 (Re_Rendering 구현하기 ver 1)](/Report/2023.11.24_Friday/React_state_exam1.md)**
-		- 조금 어려운 형태로 `Re_Rendering` 구현하기
+### React Basic 예제
 
-	- **[`state` 예제 2 (Re_Renderin 구현하기 ver 2) (미완성)](/Report/2023.11.27_Monday/React_state_exam2.md)**
-		- 조금 더 쉽고 간편한 형태로 `Re_rendering` 구현하기
+- **버튼 클릭 예제 Part 1 (~JSX)**
+    - **[version 1 / Only HTML, JS Build]()**
+    - **[version 2 / React 맛보기 1]()**
+    - **[version 3 / React 맛보기 2]()**
+    - **[version 4 / JSX 1]()**
+    - **[version 5 / JSX 2]()**
 
----
+- **`state` 예제**
+    - **버튼 클릭 예제 Part 2**
+        - **[version 1 / state 1]()**
+        - **[version 2 / state 2]()**
+        - **[version 3 / state 3](/Exam/state/ButtonClick/exam3.html)**
 
-### 3. React : `inputs and state`
-- **💻 단위 변환 앱 구현하기**
-	- **📆 작업 기간: 2023.11.28 ~ 2023.12.02**
-	- **[💻 Source Code](/Exam/state/UnitConversion.html)**
-	- **[📃 작업 일지](/Report/UnitConversion.md)**
+    - **단위 변환기 / Unit Conversion**
+        - **[단위 변환기 / Time & Meter](/Exam/state/UnitConversion.html)**
 
----
-
-### 4. React : `prop`
-- **💻 `prop` 예제**
-	- **📆 작업 기간: 2023.12.08 ~ 2023.12.00**
-	- **[예제 Source Code](/Exam/prop/propExam.html)**
-	- **[React - prop](/React_Theory/React_props.md)**
+- **버튼 예제 ver2 (`prop` 예제)**
+        - **[버튼 예제](/Exam/prop/propExam.html)**
 
 ---
