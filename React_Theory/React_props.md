@@ -86,13 +86,16 @@ const Btn = () => {
 				borderRadius: "10px",
 				margin: "5px",
 			}}
-		>	
+		>
+			Save Changes
 		</button>
 	);
 }
 const App = () => {
 	return (
 		<div>
+			<Btn />
+			<Btn />
 		</div>
 	);
 };
@@ -101,6 +104,83 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 //</script>
 ```
+
+- '**Save Changes**'  적힌 `Btn` Component 두 개가 Rendering된다.
+- 다만 이건 우리가 원하는 형태가 아니다.
+- `props`를 추가해서, `Btn` Component 두 개가 Rendering될 때 <br/>
+	하나는 '**Save**', 다른 하나는 '**Confirm**'이라는 버튼이 화면에 출력이 되게 해보자.
+
+``` jsx
+//<script type="text/babel">
+
+const Btn = (props) => {
+	return(
+		//console.log(props);
+		
+		<button
+			style={{
+				backgroundColor: "blueViolet",
+				color: "white",
+				padding: "10px",
+				border: "3px",
+				borderRadius: "10px",
+				margin: "5px",
+			}}
+		>
+			Save Changes
+		</button>
+	);
+}
+const App = () => {
+	return (
+		<div>
+			<Btn BtnName="Save"/>
+			<Btn BtnName="Confirm"/>
+		</div>
+	);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+- `function`에 매개 변수를 추가해서, 해당 함수로 인자를 전달하는 것처럼 <br/>
+	`React`의 모든 Component들은 `( )`에 임의의 매개 변수를 추가해서 <br/>
+	인자 (Argument)를 전달 받을 수 있다. (`React Component == function`)
+- 이때 추가하는 매개 변수의 이름은 원하는 것으로 지정해줄 수 있다. <br/>
+	보통은 이를 `props`라고 부르며, `Btn`으로부터 전달 받는 `properties (속성)`다.
+- `<Btn BtnName="Save" />` == `Btn({BtnName: "Save"})`
+
+- 위와 같이 `Btn` Component, `Btn` 함수에 `props`라는 매개 변수를 추가하면 <br/>
+	`App` 함수에서 `Btn` 함수를 호출할 때 추가했던 `BtnName: "Save"`가 <br/>
+	`props`에 전달되는 것을 확인할 수 있다.
+- `Btn` Component에 `console.log(props)`를 추가해서 확인해보자.
+
+```
+> { 
+	BtnName: 'Save' 
+	[[Prototype]]: Object
+  }
+  
+> { 
+ 	BtnName: 'Confirm' 
+ 	[[Prototype]]: Object
+  }
+
+Btn 함수, 컴포넌트가 두 번 Rendering됐기 때문에
+Console 창에도 두 개의 결과가 나온다.
+```
+
+- 여기서 우리가 지금 하고 있는 것은 `Btn`이라는 이름의 함수를 호출하는 것이다.
+- 그리고 `BtnName="Save (Confirm)"`을 인자로 전달하고 있을 뿐이다.
+
+- `props`는 `Btn` 함수가 가지고 있는 첫 번째이자 유일한 인자다.
+
+- 여기서 인자 `props`의 `Data Type`은 `Object`이다. <br/>
+	(위의 예제 실행 결과를 통해서 충분히 유추할 수 있다.)
+- `props`는 방금 전 `Btn` 함수를 호출할 때 전달했던 값을 `Property`로 가지고 있다. <br/>
+	(Key = `BtnName` / Value = `'Save' / 'Confirm'`)
+
 
 ---
 ## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기

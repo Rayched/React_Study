@@ -12,7 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const SaveBtn = () => {
+    const Btn = (props) => {
+        console.log(props);
         return (
             <button
                 style={{
@@ -29,28 +30,11 @@
         );
     };
 
-    const ConfirmBtn = () => {
-        return (
-            <button
-                style={{
-                    backgroundColor: "blueViolet",
-                    color: "white",
-                    padding: "10px",
-                    border: "3px",
-                    borderRadius: "10px",
-                    margin: "5px"
-                }}
-            >
-            Confirm
-            </button>
-        );
-    };
-
     const App = () => {
         return (
             <div>
-                <SaveBtn />
-                <ConfirmBtn />
+                <Btn BtnName="Save"/>
+                <Btn BtnName="Confirm"/>
             </div>
         );
     };
@@ -60,6 +44,17 @@
 </script>
 <!-- 
     작업 일지
-    
+        (1). 16:01 commit
+        2023.12.20 수요일 - 'props' 복습
+        SaveBtn Component의 이름을 'Btn'으로 수정
+        Confirm Component를 삭제하고
+        App Component에 'Btn' Component 두 개를 추가하였다.
+        (Btn 함수 두 번 호출)
+        이때 인자로 [BtnName="Save" / BtnName="Confirm"]을 전달하였다.
+        단, 위의 값이 Btn 함수에 전달될 수 있도록
+        Btn 함수에 props라는 매개변수를 추가하였다.
+
+        그 후 console.log(props) 구문을 추가하고
+        개발자 콘솔로 확인, props에 정상적으로 전달됐다.
 -->
 </html>
