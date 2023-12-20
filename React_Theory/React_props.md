@@ -181,6 +181,11 @@ Console 창에도 두 개의 결과가 나온다.
 - `props`는 방금 전 `Btn` 함수를 호출할 때 전달했던 값을 `Property`로 가지고 있다. <br/>
 	(Key = `BtnName` / Value = `'Save' / 'Confirm'`)
 
+- 이제 `props`에 인자로 전달한 값을 `Btn` Component에 반영하고 싶다.
+- `<button>`의 텍스트를 `{props.BtnName}`로 수정하고 확인해보자.
+
+![Alt text](Ref_Imgs/BtnName%EC%9D%98_%EA%B0%92%EC%9D%84_Btn_Component%EC%97%90_%EC%A0%81%EC%9A%A9.png)
+
 
 ---
 ## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기
