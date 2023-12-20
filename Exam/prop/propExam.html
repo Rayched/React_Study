@@ -12,8 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const Btn = (props) => {
-        console.log(props);
+    const Btn = ({BtnName}) => {
         return (
             <button
                 style={{
@@ -25,7 +24,7 @@
                     margin: "5px"
                 }}
             >
-                {props.BtnName}
+                {BtnName}
             </button>
         );
     };
@@ -57,6 +56,7 @@
         그 후 console.log(props) 구문을 추가하고
         개발자 콘솔로 확인, props에 정상적으로 전달됐다.
 
-        (2).
+        (2). shortcut 추가
+        매개변수 props를 거치지 않고, Object를 직접적으로 인자로 추가
 -->
 </html>

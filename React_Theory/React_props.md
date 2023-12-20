@@ -182,10 +182,42 @@ Console 창에도 두 개의 결과가 나온다.
 	(Key = `BtnName` / Value = `'Save' / 'Confirm'`)
 
 - 이제 `props`에 인자로 전달한 값을 `Btn` Component에 반영하고 싶다.
-- `<button>`의 텍스트를 `{props.BtnName}`로 수정하고 확인해보자.
-
+- `<button>`의 텍스트를 `{props.BtnName}`로 수정하고 확인해보자. <br/>
+	(`Object 'props'`에서 `BtnName`이라는 Key 값을 가진 Property 호출)
+ 
 ![Alt text](Ref_Imgs/BtnName%EC%9D%98_%EA%B0%92%EC%9D%84_Btn_Component%EC%97%90_%EC%A0%81%EC%9A%A9.png)
 
+- 여기서 `props`는 `Object`이기 때문에, `{BtnName}`과 같이 적을 수 있다. <br/>
+
+``` jsx
+//function Btn(props){};
+
+function Btn({BtnName}){};
+```
+
+- `{props.BtnName}`, `props`의 `BtnName`의 값을 출력하는 식으로 작성할 필요 없이 <br/>
+	`{BtnName}`으로 작성해서 `Property`에 바로 접근할 수 있다. (일종의 Shortcut)
+	
+* 단, 위의 방식은 Btn 함수의 인자로 전달한 객체의 Property `Key` 만 추가하고 <br/>
+	`value`는 추가하지 않고, 이후 Btn 함수를 호출할 때 해당 Property에 값을 전달해주기 때문에 
+	Btn 함수에서 설정한 `Key`와 Btn 함수 호출 시, 추가한 Property의 `Key`는 동일해야 한다.
+
+
+```
+추가 설명
+
+1. function Btn(props){}에서 매개변수 'props'의 type은 Object이다.
+2. 여기서 'props'는 React Component의 인자로 접근할 수 있는 일종의 리모컨이다.
+3. 따라서 'props.BtnName'은 변수 props를 통해서, '(React)props' 객체의
+	'BtnName'이라는 Key 값을 가진 Property로 접근하는 것이다.
+4. 물론 매개변수 props를 거칠 필요 없이 Object를 바로 추가할 수 있다.
+5. function Btn({ BtnName }){}, {props.BtnName}도 {BtnName}으로 수정
+6. props라는 매개변수를 거치지않고, 직접적으로 Object를 인자로 추가하였다.
+7. 이는 일종의 shortcut이라고 할 수 있다.
+8. 단, 여기서 BtnName Property의 Key만 지정하고, value는 지정하지 않았다.
+9. 즉, Btn 함수 호출 시 내가 원하는 값을 전달하려면 동일한 Key 값을 통해서
+	BtnName Property에 값을 전달해줘야 한다.
+```
 
 ---
 ## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기
