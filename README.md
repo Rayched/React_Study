@@ -18,7 +18,7 @@
 
 - **[React의 정의](/React_Theory/React_정의.md)**
 - **[React 개발 환경 설정](/React_Theory/React_개발_환경_설정.md)**
-- **[React 맛보기]()**
+- **[React 맛보기 (연결 X)]()**
 - **[JSX](/React_Theory/React_JSX.md)**
 - **[state](/React_Theory/React_State.md)**
 - **[prop](/React_Theory/React_props.md)**
@@ -28,16 +28,16 @@
 ### React Basic 예제
 
 - **버튼 클릭 예제 Part 1 (~JSX)**
-    - **[version 1 / Only HTML, JS Build]()**
-    - **[version 2 / React 맛보기 1]()**
-    - **[version 3 / React 맛보기 2]()**
-    - **[version 4 / JSX 1]()**
-    - **[version 5 / JSX 2]()**
+    - **[version 1 / Only HTML, JS Build (연결 X)]()**
+    - **[version 2 / React 맛보기 1 (연결 X)]()**
+    - **[version 3 / React 맛보기 2 (연결 X)]()**
+    - **[version 4 / JSX 1 (연결 X)]()**
+    - **[version 5 / JSX 2 (연결 X)]()**
 
 - **`state` 예제**
     - **버튼 클릭 예제 Part 2**
-        - **[version 1 / state 1]()**
-        - **[version 2 / state 2]()**
+        - **[version 1 / state 1 (연결 X)]()**
+        - **[version 2 / state 2 (연결 X)]()**
         - **[version 3 / state 3](/Exam/state/ButtonClick/exam3.html)**
 
     - **단위 변환기 / Unit Conversion**

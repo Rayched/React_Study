@@ -8,7 +8,100 @@
 
 
 ---
-## 1. `prop` 
+## 1. `props` 
+
+- `props` => 상위 `Component`에서 하위 `Component`로 `data`를 보내려고 할 때 사용할 수 있는 방식 
+- `Component` => `JSX` 문법을 `return`하는 단순 `function`이다.
+
+``` jsx
+//<script type="text/babel">
+function SaveBtn(){
+	return (
+	<button
+		style={{
+			backgroundColor: "Green",
+			color: "white",
+			padding: "10px",
+			border: "3px",
+			borderRadius: "10px",
+			margin: "5px",
+		}}
+	>
+		Save Changes
+	</button>
+	);
+}
+
+function ConfirmBtn(){
+	return (
+		<button
+			style={{
+			backgroundColor: "blueViolet",
+			color: "white",
+			padding: "10px",
+			border: "3px",
+			borderRadius: "10px",
+			margin: "5px",
+		}}
+		>		
+			Confirm
+		</button>
+	);
+}
+
+function App(){
+	return (
+	<div>
+		<SaveBtn />
+		<ConfirmBtn />
+	</div>
+	);
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+//</script>
+```
+
+- 위의 예제에서 각 버튼에 CSS style을 적용해줬다.
+- 다만 이건 단순한 '복사 + 붙여 넣기'에 불과한 것이다.
+- 버튼의 개수가 늘어날 수록 매번 이런 식으로 style을 추가할 수는 없다.
+
+- 이제 우리는 이런 `style`을 모두 갖고 있는 하나의 `Component`를 만들 것이다.
+- 버튼의 텍스트만 수정하고, `CSS Style`을 두 번이나 복사 + 붙여 넣기를 할 필요가 없어진다.
+
+``` jsx
+//<script type="text/babel">
+
+//function SaveBtn(){...} 기존 SaveBtn을 Btn으로 수정
+
+const Btn = () => {
+	return(
+		<button
+			style={{
+				backgroundColor: "blueViolet",
+				color: "white",
+				padding: "10px",
+				border: "3px",
+				borderRadius: "10px",
+				margin: "5px",
+			}}
+		>	
+		</button>
+	);
+}
+const App = () => {
+	return (
+		<div>
+		</div>
+	);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+//</script>
+```
+
 ---
 ## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기
 ---
