@@ -56,7 +56,7 @@ root.render(<App />);
 //</script>
 ```
 
-<h4><a href="/Exam/prop/memoExam.html">'React.memo' 예제 실행하기</a></h4>
+<h4><a href="/React_Study/Exam/prop/memoExam.html">'React.memo' 예제 실행하기</a></h4>
 
 ```
 Default가 랜더링 됐습니다.
