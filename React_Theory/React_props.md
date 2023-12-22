@@ -426,7 +426,7 @@ Value Changes 요소가 랜더링 됐습니다.
 - `<App />` Component의 `state`를 참조하는 'Save' 버튼만 Re-rendering되고 <br/>
 	'Confirm' 버튼은 Re-rendering되지 않는 것을 확인할 수 있다.
 
-- [`React.memo()` 정리 글](/React_Study/React_Theory/React_Memo.md)
+- [`React.memo()` 정리 글](/React_Study/React_Theory/React_Memo)
 	
 ---
 ## 3. `prop` 타입 지정하기
