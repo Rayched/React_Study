@@ -10,6 +10,8 @@
 ---
 ## 1. `props` 
 
+### 1 - 1. `props` 다루기
+
 - `props` => 상위 `Component`에서 하위 `Component`로 `data`를 보내려고 할 때 사용할 수 있는 방식 
 - `Component` => `JSX` 문법을 `return`하는 단순 `function`이다.
 
@@ -220,9 +222,165 @@ function Btn({BtnName}){};
 ```
 
 ---
-## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기
+### 1 - 2. `props`에 `function` 전달하기
+
+- 앞에서 `props`에 `string`, `boolean` 등을 보내봤다.
+- 이번에는 `props`에 `function`을 전달하고, 부모 Component에서 `state`가 바뀔 때 <br/>
+	자식 Component에서 어떤 일이 발생하는 지 확인해보자.
+
+``` jsx
+const Btn = ({BtnName}) =>{/*...*/}
+
+const App = () => {
+	const [value, setValue] = React.useState("Save");
+	
+	function ChangeValue(){
+		setValue("Value Changes");
+	}
+
+	return (
+		<div>
+			<Btn BtnName={value} ChangeValue={ChangeValue}/>
+			<Btn BtnName="Confirm"/>
+		</div>
+	);
+};
+
+```
+
+- `App` Component에 `state`와 `state`의 값을 변경하는 함수 `ChangeValue`를 추가하였다.
+- 그리고 `Btn` Component에 함수 `ChangeValue`를 `prop`으로 전달하였다.
+
+- 여기서 `<Btn />`에 전달한 `onClick`은 `EventListener`가 아니라 <br/>
+	`event`를 실행시키는 함수가 Property로 전달한 것이다. <br/>
+	
+- 즉, 기존 `JSX` 문법에서 `HTML` 태그 자체에 `event`를 추가한 식이 아닌 <br/>
+	단순히 `Btn` Component에 `BtnName`, `ChangeValue`이라는 `Property`를 추가한 것 뿐이다.
+	
+- `Save` 버튼을 클릭했을 때, 버튼의 텍스트가 바뀌게 하려면 <br/>
+	`Btn` Component에 전달된 **ChangeValue**라는 `Property`의 값인 `ChangeValue` 함수를 <br/>
+	`Btn` Component에서 `EventListener`로 실행해야 한다.
+
+``` jsx
+//<script type="text/babel">
+const Btn = ({BtnName, ChangeValue}) => {
+	return (
+		<button
+			style={{
+				backgroundColor: "green",
+				color: "white",
+				padding: "10px",
+				border: "3px",
+				borderRadius: "10px",
+				margin: "5px"
+			}}
+			onClick={ChangeValue}
+        >	
+			{BtnName}
+		</button>
+	);
+};
+
+const App = () => {
+	const [value, setValue] = React.useState("Save");
+	
+	function ChangeValue(){
+		setValue("Value Changes");
+	}
+
+	return (
+		<div>
+			<Btn BtnName={value} ChangeValue={ChangeValue}/>
+			<Btn BtnName="Confirm"/>
+		</div>
+	);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+//</script>
+```
+
+-  `App` Component에서 `<Btn />` 함수를 호출할 때 <br/>
+	`BtnName`, `ChangeValue` 등의 속성들을 추가해도 이게 `Btn`에 적용되지는 않는다.
+
+- `App` Component에서 전달 받은 `BtnName`, `ChangeValue`는 단순한 객체 Property로 <br/>
+	`Btn` Component의 `props`에 남아있을 뿐이고 이를 `Btn` Component 내부에서 <br/>
+	해당 Property (`App` Component 전달 받은 것)를 꺼내와서 사용해줘야 한다.
+
 ---
-## 3. `prop` 타입 지정하기
+## 2. `React.memo()`를 통해 Re-rendering되지 않을 Component 지정하기
+
+``` jsx
+//<script type="text/babel">
+const Btn = ({BtnName, ChangeValue}) => {
+	return (
+		<button
+			style={{
+				backgroundColor: "green",
+				color: "white",
+				padding: "10px",
+				border: "3px",
+				borderRadius: "10px",
+				margin: "5px"
+			}}
+			onClick={ChangeValue}
+        >	
+			{BtnName}
+		</button>
+	);
+};
+
+const App = () => {
+	const [value, setValue] = React.useState("Save");
+	
+	function ChangeValue(){
+		setValue("Value Changes");
+	}
+
+	return (
+		<div>
+			<Btn BtnName={value} ChangeValue={ChangeValue}/>
+			<Btn BtnName="Confirm"/>
+		</div>
+	);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+//</script>
+```
+
+- 위의 기존 코드에서 아래 구문을 `Btn` Component에 추가해보자. <br/>
+	`console.log(BtnName, " 요소가 랜더링 됐습니다.");`
+
+```
+Output
+
+Save 요소가 랜더링 됐습니다.
+Confirm 요소가 랜더링 됐습니다.
+
+Value Changes 요소가 랜더링 됐습니다.
+Confirm 요소가 랜더링 됐습니다.
+```
+
+- **Save** 버튼을 클릭했을 때, `state` 값을 변경하는 `ChangeValue` 함수가 실행된다. <br/>
+	해당 함수가 실행되면 `state`의 값을 바꾸는 `setValue` 함수에 의해 <br/>
+	`state`의 값이 `Save`에서 `Value Change`로 바뀌고 Re-Rendering된다.
+
+- 여기서 `state`를 참조하는 첫 번째 `Btn` 요소, Save 버튼은 `state` 값이 바뀜에 따라 <br/>
+	이를 참조하는 'Save' 버튼 요소는 당연히 Re-rendering되지만 <br/>
+	`state`를 참조하지 않는 두 번째 `Btn` 요소, 'Confirm' 버튼까지 같이 Re-rendering됐다.
+
+- 이는 `ReactJS`의 규칙에 따라 `App` Component에서 `state` 값이 바뀌면 <br/>
+	해당 Component의 하위 요소인 `<Btn />` Component까지 같이 Re-rendering된다.
+	
+- 그리고 이 과정에서 방금 전 'Confirm' 버튼이 Re-rendering된 것처럼 <br/>
+	불필요한 Rendering이 발생할 수도 있는데 이런 경우는 `React.memo()`를 통해서 <br/>
+	
+
+---
+## 4. `prop` 타입 지정하기
 
 ``` jsx
 function Btn({text, Change_BtnName, fontSize}){

@@ -12,7 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const Btn = ({BtnName}) => {
+    const Btn = ({BtnName, ChangeValue}) => {
+        console.log(BtnName + " 요소가 랜더링 됐습니다.");
         return (
             <button
                 style={{
@@ -23,6 +24,7 @@
                     borderRadius: "10px",
                     margin: "5px"
                 }}
+                onClick={ChangeValue}
             >
                 {BtnName}
             </button>
@@ -30,9 +32,15 @@
     };
 
     const App = () => {
+        const [value, setValue] = React.useState("Save");
+
+        function ChangeValue(){
+            setValue("Value Changes");
+        }
+
         return (
             <div>
-                <Btn BtnName="Save"/>
+                <Btn BtnName={value} ChangeValue={ChangeValue}/>
                 <Btn BtnName="Confirm"/>
             </div>
         );
