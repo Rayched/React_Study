@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>React.memo 예제</title>
+    </head>
+    <body>
+        <div>
+            <h3>React.memo 예제입니다.</h3>
+            <p>개발자 Console에서 컴포넌트가 랜더링되는 것을 확인해보세요.</p>
+            <hr/>
+        </div>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const Btn = React.memo(
+            function ({BtnName, ChangeName}){
+                console.log(`${BtnName}이 랜더링 됐습니다.`);
+                return (
+                    <div>
+                        <button onClick={ChangeName}>
+                            {BtnName}
+                        </button>
+                    </div>
+                );
+            }
+        );
+
+        const App = () => {
+            const [Value, setValue] = React.useState("Default");
+
+            const ChangeName = () => setValue("Name Change");
+
+            return (
+                <div>
+                    <Btn BtnName={Value} ChangeName={ChangeName}/>
+                    <Btn BtnName="Non Change"/>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />)
+    </script>
+</html>
