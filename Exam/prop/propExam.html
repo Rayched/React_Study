@@ -31,6 +31,8 @@
         );
     };
 
+    const MemorisedBtn = React.memo(Btn);
+
     const App = () => {
         const [value, setValue] = React.useState("Save");
 
@@ -40,8 +42,8 @@
 
         return (
             <div>
-                <Btn BtnName={value} ChangeValue={ChangeValue}/>
-                <Btn BtnName="Confirm"/>
+                <MemorisedBtn BtnName={value} ChangeValue={ChangeValue}/>
+                <MemorisedBtn BtnName="Confirm"/>
             </div>
         );
     };

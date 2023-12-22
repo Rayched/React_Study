@@ -355,10 +355,10 @@ root.render(<App />);
 	`console.log(BtnName, " 요소가 랜더링 됐습니다.");`
 
 ```
-Output
-
 Save 요소가 랜더링 됐습니다.
 Confirm 요소가 랜더링 됐습니다.
+
+> 'Save' 버튼 클릭
 
 Value Changes 요소가 랜더링 됐습니다.
 Confirm 요소가 랜더링 됐습니다.
@@ -368,17 +368,66 @@ Confirm 요소가 랜더링 됐습니다.
 	해당 함수가 실행되면 `state`의 값을 바꾸는 `setValue` 함수에 의해 <br/>
 	`state`의 값이 `Save`에서 `Value Change`로 바뀌고 Re-Rendering된다.
 
-- 여기서 `state`를 참조하는 첫 번째 `Btn` 요소, Save 버튼은 `state` 값이 바뀜에 따라 <br/>
-	이를 참조하는 'Save' 버튼 요소는 당연히 Re-rendering되지만 <br/>
-	`state`를 참조하지 않는 두 번째 `Btn` 요소, 'Confirm' 버튼까지 같이 Re-rendering됐다.
+- 여기서 `state`를 참조하는 첫 번째 `Btn` 요소, **Save** 버튼은 `state` 값이 바뀜에 따라 <br/>
+	이를 참조하는 `Btn` 요소는 당연히 Re-rendering되지만 <br/>
+	`state`를 참조하지 않는 두 번째 `Btn` 요소, **'Confirm'** 버튼까지 같이 Re-rendering됐다.
 
 - 이는 `ReactJS`의 규칙에 따라 `App` Component에서 `state` 값이 바뀌면 <br/>
 	해당 Component의 하위 요소인 `<Btn />` Component까지 같이 Re-rendering된다.
 	
-- 그리고 이 과정에서 방금 전 'Confirm' 버튼이 Re-rendering된 것처럼 <br/>
-	불필요한 Rendering이 발생할 수도 있는데 이런 경우는 `React.memo()`를 통해서 <br/>
-	
+- 그리고 이 과정에서 방금 전 **'Confirm'** 버튼이 Re-rendering된 것처럼 <br/>
+	불필요한 Rendering이 발생할 수도 있는데 이런 경우는 `React.memo()` 통해서 <br/>
+	`prop`의 변경이 일어난 부분에만 Rendering 발생 시킬 수 있다.
 
+- 아래 코드를 추가하고, 웹 페이지를 새로 고침하고 <br/>
+	console 창에 출력 되는 메시지를 확인해보자. <br/>
+	
+``` jsx
+//const Btn = ({BtnName, ChangeValue}) => {...}
+
+const MemorisedBtn = React.memo(Btn); //New
+
+const App = () => {
+	const [value, setValue] = React.useState("Save");
+	
+	function ChangeValue(){
+		setValue("Value Changes");
+	}
+	/*
+	return (
+		<div>
+			<Btn BtnName={value} ChangeValue={ChangeValue}/>
+			<Btn BtnName="Confirm"/>
+		</div>
+	);
+	*/
+
+	return (
+		<div>
+			<MemorisedBtn BtnName={value} ChangeValue={ChangeValue}/>
+			<MemorisedBtn BtnName="Confirm"/>
+		</div>
+	);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+```
+Save 요소가 랜더링 됐습니다.
+Confirm 요소가 랜더링 됐습니다.
+
+> 'Save' 버튼 클릭
+
+Value Changes 요소가 랜더링 됐습니다.
+```
+
+- `<App />` Component의 `state`를 참조하는 'Save' 버튼만 Re-rendering되고 <br/>
+	'Confirm' 버튼은 Re-rendering되지 않는 것을 확인할 수 있다.
+
+- [`React.memo()` 정리 글](/React_Theory/React.memo().md)
+	
 ---
 ## 4. `prop` 타입 지정하기
 
