@@ -429,7 +429,7 @@ Value Changes 요소가 랜더링 됐습니다.
 - [`React.memo()` 정리 글](/React_Theory/React_Memo.md)
 	
 ---
-## 4. `prop` 타입 지정하기
+## 3. `prop` 타입 지정하기
 
 ``` jsx
 function Btn({text, Change_BtnName, fontSize}){
