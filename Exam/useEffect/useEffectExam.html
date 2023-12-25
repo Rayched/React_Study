@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>React 예제 양식</title>
+    </head>
+    <body>
+        <div id="menu">
+            <h4>React 예제</h4>
+            <p>React 견본 예제입니다.</p>
+            <hr/>
+        </div>
+        <div id="root">
+        </div>
+    </body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const App = () => {
+            const [counter, setValue] = React.useState(0);
+
+            const BtnClick = () => setValue((prev) => prev + 1);
+
+            console.log("Rendering");
+
+            return (
+                <div>
+                    <h3>Click Here 👇</h3>
+                    <button onClick={BtnClick}>Click me</button>
+                    <h4>버튼 클릭 횟수 : {counter}</h4>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>React 예제 양식</title>
+    </head>
+    <body>
+        <div id="menu">
+            <h4>React 예제</h4>
+            <p>React 견본 예제입니다.</p>
+            <hr/>
+        </div>
+        <div id="root">
+            <!--
+                'CRA' 방법을 통해서 React 초기 개발 환경 설정법을 배웠지만
+                강의를 들으면서 만든 예제와 공부한 내용을 정리해둔 걸
+                모아둔 'React_Study' Project 특성 상
+                매번 'CRA'로 React 예제를 만들 경우
+                추후에 'React_Study' 자체의 용량이 너무 과해질 것 같아서
+                부득이하게 이전 방식 ('<script> import')으로
+                예제를 만들기로 결정하였음.
+
+                이후 본격적인 프로젝트를 만들기 시작하면
+                'CRA, Create React App' 방식으로 React 개발 환경을
+                설정하도록 하겠다.
+            -->
+        </div>
+    </body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        import {useState} from 'React';
+
+        const App = () => {
+            return (
+                <div></div>
+            );
+        };
+
+        const root = React.createRoot(document.getElementById);
+        root.render(<App />);
+    </script>
+</html>

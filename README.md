@@ -22,28 +22,42 @@
 - **[JSX](/React_Theory/React_JSX.md)**
 - **[state](/React_Theory/React_State.md)**
 - **[prop](/React_Theory/React_props.md)**
+- **[useEffect](/React_Theory/React_useEffect.md)**
 
 ---
 
 ### React Basic 예제
 
-- **버튼 클릭 예제 Part 1 (~JSX)**
-    - **[version 1 / Only HTML, JS Build (연결 X)]()**
-    - **[version 2 / React 맛보기 1 (연결 X)]()**
-    - **[version 3 / React 맛보기 2 (연결 X)]()**
-    - **[version 4 / JSX 1 (연결 X)]()**
-    - **[version 5 / JSX 2 (연결 X)]()**
-
-- **`state` 예제**
-    - **버튼 클릭 예제 Part 2**
-        - **[version 1 / state 1 (연결 X)]()**
-        - **[version 2 / state 2 (연결 X)]()**
-        - **[version 3 / state 3](/Exam/state/ButtonClick/exam3.html)**
-
-    - **단위 변환기 / Unit Conversion**
-        - **[단위 변환기 / Time & Meter](/Exam/state/UnitConversion.html)**
-
-- **버튼 예제 ver2 (`prop` 예제)**
-        - **[버튼 예제](/Exam/prop/propExam.html)**
+#### 버튼 클릭 예제 Part 1 (~JSX)
+- **[version 1 / HTML, JavaScript로 구현한 버전 (연결 X)](/Exam/JSX/NonUseReact/exam1.html)**
+- **[version 2 / React 맛보기 예제](/Exam/JSX/ReactBasic/exam3.html)**
+- **[version 3 / JSX](/Exam/JSX/JSX_Exam/exam5.html)**
 
 ---
+
+#### `state` 예제
+- **버튼 클릭 예제 Part 2**
+    - 버튼과 버튼 클릭 횟수를 기록해두는 예제
+    - 기본적인 디자인은 크게 다르지 않음. (소스코드만 약간 다름)
+    - **[version 1 / state 1 (연결 X)](/Exam/state/ButtonClick/exam1.html)**
+    - **[version 2 / state 2 (연결 X)](/Exam/state/ButtonClick/exam2.html)**
+    - **[version 3 / state 3](/Exam/state/ButtonClick/exam3.html)**
+
+- **단위 변환기 / Unit Conversion**
+    - **[단위 변환기 / Time & Meter](/Exam/state/UnitConversion.html)**
+
+---
+
+#### `props` 예제
+- **버튼 클릭 예제** 
+    - 버튼을 클릭하면, 버튼의 텍스트가 바뀌는 예제
+    - **[예제 링크](/Exam/prop/propExam.html)**
+
+- **버튼 클릭 예제 (좀 더 개선된 version)**
+    - `React.memo()`를 활용해서 버튼 Rendering 개선
+    - **[예제 링크](/Exam/prop/memoExam.html)**
+
+---
+
+#### `useEffect` 예제
+- **[예제 링크](/Exam/useEffect/useEffectExam.html)**
