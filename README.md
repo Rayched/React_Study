@@ -29,7 +29,7 @@
 ### React Basic 예제
 
 #### 버튼 클릭 예제 Part 1 (~JSX)
-- **[version 1 / HTML, JavaScript로 구현한 버전 (연결 X)](/Exam/JSX/NonUseReact/exam1.html)**
+- **[version 1 / HTML, JavaScript로 구현한 버전](/Exam/JSX/NonUseReact/exam1.html)**
 - **[version 2 / React 맛보기 예제](/Exam/JSX/ReactBasic/exam3.html)**
 - **[version 3 / JSX](/Exam/JSX/JSX_Exam/exam5.html)**
 
@@ -39,8 +39,8 @@
 - **버튼 클릭 예제 Part 2**
     - 버튼과 버튼 클릭 횟수를 기록해두는 예제
     - 기본적인 디자인은 크게 다르지 않음. (소스코드만 약간 다름)
-    - **[version 1 / state 1 (연결 X)](/Exam/state/ButtonClick/exam1.html)**
-    - **[version 2 / state 2 (연결 X)](/Exam/state/ButtonClick/exam2.html)**
+    - **[version 1 / state 1](/Exam/state/ButtonClick/exam1.html)**
+    - **[version 2 / state 2](/Exam/state/ButtonClick/exam2.html)**
     - **[version 3 / state 3](/Exam/state/ButtonClick/exam3.html)**
 
 - **단위 변환기 / Unit Conversion**
