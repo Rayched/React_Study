@@ -27,7 +27,7 @@ const MyCompo = React.memo(function MyComponent(props){
 //<script type="text/babel">
 const Btn = React.memo(
 	function ({BtnName, ChangeName}){
-		console.log(`${BtnName}이 랜더링 됐습니다.`);
+		console.log(`${BtnName}가 랜더링 됐습니다.`);
 		return (
 			<div>
 				<button onClick={ChangeName}>
@@ -56,5 +56,29 @@ root.render(<App />);
 //</script>
 ```
 
-<h4><a href="/Exam/prop/memoExam.html">'React.memo' 예제 실행하기</a></h4>
+<h4><a href="/React_Study/Exam/prop/memoExam.html">'React.memo' 예제 실행하기</a></h4>
+
+```
+Default가 랜더링 됐습니다.
+Non_Change가 랜더링 됐습니다.
+
+> 'Default' 버튼 클릭
+
+Name Change가 랜더링 됐습니다.
+```
+
+- `Default` 버튼을 클릭하면, `eventListener`로 `ChangeName` 함수가 실행된다. <br/>
+	해당 함수 `ChangeName`은 `state` 값을 변경하는 `setValue` 함수를 호출한다.
+
+- 그리고 `setValue` 함수에 의해 `state` 값이 `Default`에서 `Name Change`로 변경되고 <br/>
+	Re-rendering이 발생한다. 
+
+- 첫 번째 버튼 요소인 `Default` 버튼의 이름 `BtnName`은  `state`의 값을 참조하기 때문에 <br/>
+	`state` 값이 변경되면 이를 참조하는 `BtnName` Property의 값도 변경이 되기 때문에
+	첫 번째 버튼 요소의 이름도 `Name Change`로 바뀌게 된다.
+
+* 하지만 두 번째 버튼 요소인 `Non Change`의 버튼의 이름, `BtnName` `prop`의 변화는 없으므로 <br/>
+	`React.memo()`에 따라 마지막으로 Rendering됐던 결과가 재 사용된다.
+
+- 즉, `props`에 변화가 없는 두 번째 버튼 요소는 Re-rendering이 발생하지 않는다는 것이다.
 
