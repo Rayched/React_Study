@@ -18,22 +18,26 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const App = () => {
+            //'state'
             const [counter, setValue] = React.useState(0);
+            const [Keyword, setKeyword] = React.useState("");
             
             const BtnClick = () => setValue((prev) => prev + 1);
 
-            console.log("App Component Rendering 완료"); 
-            //'state' 값에 변화가 있을 때마다 계속 반복해서 실행됨
-            /** 
-             * 'useEffect()' 함수를 통해서
-             * 처음 Rendering될 때만 실행할 함수를 설정할 수 있다.
-            */
+            const TextChange = (event) => {
+                setKeyword(event.target.value);
+            };
 
-           React.useEffect(() => {
-                console.log("App Component가 처음 Rendering될 때만");
-                console.log("실행되는 함수입니다.");
-           }, []);
-           /** 
+            //'useEffect()' 함수 설명용
+            const OnlyRunOnce = () => {
+                console.log("처음 한 번만 실행되는 함수입니다.")
+            };
+
+            console.log("App Component Rendering 완료"); 
+
+            React.useEffect(OnlyRunOnce, []);
+
+            /** 
             * 'React.useEffect('Callback Func', [])'
             * 두 개의 인자를 가지고 있는 함수
             * 하나는 Callback Function, 딱 한 번만 실행하고 싶은 함수
@@ -53,12 +57,29 @@
             * 'useEffect()'의 인자로 설정한 함수는 Re-rendering으로부터
             * 보호를 받는다.
            */
-
+            /** 
+             * 검색창과 'state' 연동
+             * 
+             * 검색창에 검색어, 텍스트를 입력할 때마다
+             * Re-rendering이 발생하는데
+             * 여기서 'useEffect' 함수의 인자로 전달된
+             * OnlyRunOnce 함수는 재실행되지 않는 것을 볼 수 있다.
+             * 
+             * useEffect() 함수를 사용하면
+             * 검색창에 글자를 입력할 때마다 
+             * API를 새로 호출할 필요가 없어진다.
+            */
             return (
                 <div>
                     <h3>Click Here 👇</h3>
                     <button onClick={BtnClick}>Click me</button>
                     <h4>버튼 클릭 횟수 : {counter}</h4>
+                    <input 
+                        type="text" 
+                        placeholder="검색어를 입력해주세요."
+                        onChange={TextChange}
+                        value={Keyword}
+                    />
                 </div>
             );
         };
