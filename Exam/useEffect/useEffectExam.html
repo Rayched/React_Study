@@ -19,10 +19,40 @@
     <script type="text/babel">
         const App = () => {
             const [counter, setValue] = React.useState(0);
-
+            
             const BtnClick = () => setValue((prev) => prev + 1);
 
-            console.log("Rendering");
+            console.log("App Component Rendering 완료"); 
+            //'state' 값에 변화가 있을 때마다 계속 반복해서 실행됨
+            /** 
+             * 'useEffect()' 함수를 통해서
+             * 처음 Rendering될 때만 실행할 함수를 설정할 수 있다.
+            */
+
+           React.useEffect(() => {
+                console.log("App Component가 처음 Rendering될 때만");
+                console.log("실행되는 함수입니다.");
+           }, []);
+           /** 
+            * 'React.useEffect('Callback Func', [])'
+            * 두 개의 인자를 가지고 있는 함수
+            * 하나는 Callback Function, 딱 한 번만 실행하고 싶은 함수
+            * 다른 하나는 [], 배열이다.
+            * 
+            * 'useEffect()' 함수의 인자로 전달된 함수는
+            * 화면에 React Component가 Rendering이 완료된 후에 실행된다.
+            * 
+            * 'useEffect()'로 설정한 RunOnlyOnce 함수는
+            * App Component가 처음 Rendering될 때만
+            * 실행되고, 이후 버튼을 클릭해서 state 값의 변화가 생기고
+            * App Component가 Re-rendering이 발생될 때
+            * 해당 함수, RunOnlyOnce는 재실행되지 않았다.
+            * 
+            * 특정 코드가 딱 한 번만 실행될 수 있게 해주는 함수
+            * 'state' 값의 변화로 Re-rendering이 발생할 때
+            * 'useEffect()'의 인자로 설정한 함수는 Re-rendering으로부터
+            * 보호를 받는다.
+           */
 
             return (
                 <div>
