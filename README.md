@@ -60,4 +60,5 @@
 ---
 
 #### `useEffect` 예제
-- **[예제 링크](/Exam/useEffect/useEffectExam.html)**
+- **[`useEffect` 예제](/Exam/useEffect/useEffectExam.html)**
+- **[`cleanup` 예제](/Exam/useEffect/CleanupExam.html)**

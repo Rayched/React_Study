@@ -2,12 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>React 예제 양식</title>
+        <title>cleanup 예제</title>
     </head>
     <body>
         <div id="menu">
-            <h4>React 예제</h4>
-            <p>React 견본 예제입니다.</p>
+            <h4>React - 'cleanup' 예제</h4>
             <hr/>
         </div>
         <div id="root">
@@ -18,7 +17,10 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-        function CatImage(){
+        function BtnExam(){
+            const [counter, setCounter] = React.useState(0);
+
+            const BtnCount = () => setCounter((BtnClick) => BtnClick + 1);
 
             React.useEffect(() => {
                 console.log("Display");
@@ -26,10 +28,9 @@
 
             return (
                 <div>
-                    <h4>Cat</h4>
-                    <p>귀여운 고양이입니다.</p>
-                    <img src="Exam\useEffect\sleepingCat.jpg"/>
-                    <p>촬영 일: 2018.03.18</p>
+                    <h4>Click Here 👇</h4>
+                    <button onClick={BtnCount}>Click me</button>
+                    <h4>버튼 클릭 횟수 : {counter}</h4>
                 </div>
             );
         }
@@ -44,7 +45,7 @@
                     <button onClick={onClick}>
                         {showing ? "Non Display" : "Display"}
                     </button>
-                    {showing ? <CatImage /> : null}
+                    {showing ? <BtnExam /> : null}
                 </div>
             );
         };
