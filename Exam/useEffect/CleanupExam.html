@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>React 예제 양식</title>
+    </head>
+    <body>
+        <div id="menu">
+            <h4>React 예제</h4>
+            <p>React 견본 예제입니다.</p>
+            <hr/>
+        </div>
+        <div id="root">
+        </div>
+    </body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function CatImage(){
+
+            React.useEffect(() => {
+                console.log("Display");
+            }, []);
+
+            return (
+                <div>
+                    <h4>Cat</h4>
+                    <p>귀여운 고양이입니다.</p>
+                    <img src="Exam\useEffect\sleepingCat.jpg"/>
+                    <p>촬영 일: 2018.03.18</p>
+                </div>
+            );
+        }
+
+        function App (){
+            const [showing, setShowing] = React.useState(false);
+
+            const onClick = () => setShowing((prev) => !prev);
+
+            return (
+                <div>
+                    <button onClick={onClick}>
+                        {showing ? "Non Display" : "Display"}
+                    </button>
+                    {showing ? <CatImage /> : null}
+                </div>
+            );
+        };
+        /** 
+         * 버튼을 클릭하면, 버튼 텍스트가 'Non Display'로 바뀌고
+         * TestCompo
+        */
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</html>

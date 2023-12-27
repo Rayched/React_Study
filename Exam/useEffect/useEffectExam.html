@@ -40,52 +40,54 @@
             React.useEffect(OnlyRunOnce, [counter]);
 
             React.useEffect(()=>{
-                /** 
-                 * 그대로 두면 위의 코드는 딱 한 번만 실행된다.
-                 * 이는 내가 원하는 모습이 아니다.
-                 * 
-                 * 검색어를 입력할 때만 위의 문장이 출력되게 하고싶다.
-                 * 물론 버튼 클릭 event에는 반응하면 안된다. (실행 X)
-                 * 
-                 * 'useEffect()'의 인자 중 하나인 '[]', 배열 주목
-                 * 배열에 'Keyword' 변수 추가
-                 * 'Keyword'와 연결된 'state'의 변화가 있을 때
-                 * 즉, 검색창에 검색어를 입력했을 때만
-                 * 코드가 실행되도록 설정한 것이다.
-                 * 
-                 * 다만 검색창에 텍스트를 입력할 때마다
-                 * 계속 반응을 하니 불편하다.
-                 * 조건문 활용, 코드를 약간만 수정하자.
-                 * 
-                 * 'Keyword', state에 전달되는 텍스트가 3자 이상일 때
-                 * 검색어가 세 글자 이상일 때만 반응하도록 logic 수정
-                */
+                //console.log(`입력한 검색어 : ${Keyword}`);
                if(Keyword !== "" && Keyword.length >= 3){
                     console.log(`입력한 검색어 : ${Keyword}`);
                }
             }, [Keyword]);
+            /** (3)
+                * 그대로 두면 위의 코드는 딱 한 번만 실행된다.
+                * 이는 내가 원하는 모습이 아니다.
+                * 
+                * 검색어를 입력할 때만 위의 문장이 출력되게 하고싶다.
+                * 물론 버튼 클릭 event에는 반응하면 안된다. (실행 X)
+                * 
+                * 'useEffect()'의 인자 중 하나인 '[]', 배열 주목
+                * 배열에 'Keyword' 변수 추가
+                * 'Keyword'와 연결된 'state'의 변화가 있을 때
+                * 즉, 검색창에 검색어를 입력했을 때만
+                * 코드가 실행되도록 설정한 것이다.
+                * 
+                * 다만 검색창에 텍스트를 입력할 때마다
+                * 계속 반응을 하니 불편하다.
+                * 조건문 활용, 코드를 약간만 수정하자.
+                * 
+                * 'Keyword', state에 전달되는 텍스트가 3자 이상일 때
+                * 검색어가 세 글자 이상일 때만 반응하도록 logic 수정
+                */
 
-            /** 
-            * 'React.useEffect('Callback Func', [])'
-            * 두 개의 인자를 가지고 있는 함수
-            * 하나는 Callback Function, 딱 한 번만 실행하고 싶은 함수
-            * 다른 하나는 [], 배열이다.
-            * 
-            * 'useEffect()' 함수의 인자로 전달된 함수는
-            * 화면에 React Component가 Rendering이 완료된 후에 실행된다.
-            * 
-            * 'useEffect()'로 설정한 RunOnlyOnce 함수는
-            * App Component가 처음 Rendering될 때만
-            * 실행되고, 이후 버튼을 클릭해서 state 값의 변화가 생기고
-            * App Component가 Re-rendering이 발생될 때
-            * 해당 함수, RunOnlyOnce는 재실행되지 않았다.
-            * 
-            * 특정 코드가 딱 한 번만 실행될 수 있게 해주는 함수
-            * 'state' 값의 변화로 Re-rendering이 발생할 때
-            * 'useEffect()'의 인자로 설정한 함수는 Re-rendering으로부터
-            * 보호를 받는다.
+            /** (1)
+                * 'React.useEffect('Callback Func', [])'
+                * 두 개의 인자를 가지고 있는 함수
+                * 하나는 Callback Function, 딱 한 번만 실행하고 싶은 함수
+                * 다른 하나는 [], 배열이다.
+                * 
+                * 'useEffect()' 함수의 인자로 전달된 함수는
+                * 화면에 React Component가 Rendering이 완료된 후에 실행된다.
+                * 
+                * 'useEffect()'로 설정한 RunOnlyOnce 함수는
+                * App Component가 처음 Rendering될 때만
+                * 실행되고, 이후 버튼을 클릭해서 state 값의 변화가 생기고
+                * App Component가 Re-rendering이 발생될 때
+                * 해당 함수, RunOnlyOnce는 재실행되지 않았다.
+                * 
+                * 특정 코드가 딱 한 번만 실행될 수 있게 해주는 함수
+                * 'state' 값의 변화로 Re-rendering이 발생할 때
+                * 'useEffect()'의 인자로 설정한 함수는 Re-rendering으로부터
+                * 보호를 받는다.
            */
-            /** 
+          
+            /** (2)
              * 검색창과 'state' 연동
              * 
              * 검색창에 검색어, 텍스트를 입력할 때마다
