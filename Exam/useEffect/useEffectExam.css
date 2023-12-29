@@ -1,0 +1,27 @@
+button {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: blueviolet;
+    color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80px;
+    height: 50px;
+}
+
+span {
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    height: 25px;
+}
+
+input {
+    border-radius: 5px;
+    width: 170px;
+    height: 30px;
+}

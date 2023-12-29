@@ -42,7 +42,7 @@ root.render(<App />);
 	`state` 값이 변해도 특정 코드가 다시 실행되지 않게 하는 방법에 대해 다룰 것이다.
 
 ---
-### `useEffect
+### `useEffect` Part I
 `
 - 특정 코드를 딱 한 번만 실행될 수 있게 해주는 `React` 함수
 
@@ -86,7 +86,181 @@ const App = () => {
 	`useEffect()` 함수의 인자로 전달한 `OnlyRunOnce` 함수가 실행이 된다.
 - 버튼을 클릭해서, `state` 값이 변화하여 Re-rendering이 발생될 때 <br/>
 	`useEffect()` 함수의 인자로 전달했던 함수는 다시 실행하지 않는 것을 확인할 수 있다.
+
 ---
+### `useEffect` Part II
+
+- `useEffect` 함수를 통해서 한 번만 실행할 코드를 지정하는 법을 알았으니 <br/>
+	버튼 예제 바로 아래 칸에 검색 창을 추가해보자.
+	
+``` jsx
+//<script type="text/babel">
+const App = () => {
+	const [counter, setValue] = React.useState(0);
+	const BtnClick = () => setValue((prev) => prev + 1);
+
+	//new
+	const [Keyword, setKeyword] = React.useState(0);
+	const TextChange = (event) => {
+		setKeyword(event.target.value);
+	};
+
+	console.log("Rendering");
+
+	function OnlyRunOnce(){
+		console.log("한 번만 실행되는 함수입니다.")
+	}
+	
+	React.useEffect(OnlyRunOnce, []);
+	
+	return (
+		<div class="Main">
+			<div class="BtnCount">
+				<h3>Click Here 👇</h3>
+				<button onClick={BtnClick}>Click</button>
+				<h4>버튼 클릭 횟수 : {counter}</h4>
+			</div>
+			<hr/>
+			<div class="SearchBar">
+				<span>검색창</span>
+				<input 
+					type="text"
+					placeholder="검색어를 입력해주세요."
+					onChange={TextChange}
+					value={Keyword}
+				/>
+			</div>
+		</div>
+	);
+};
+//</script>
+```
+
+- 버튼을 클릭하거나, 검색 창에 검색어를 입력할 때마다 <br/>
+	Console 창에 **"Rendering"** 이라는 문장이 출력 되는 것을 확인할 수 있다.
+
+- 이제 버튼을 클릭하면 **"버튼을 클릭했습니다."** <br/>
+	검색어를 입력하면 **"검색어를 입력했습니다."** 이라는 문장이 출력 되게 해보자.	
+
+``` jsx
+React.useEffect(/*Callback Function*/, /*[]*/);
+```
+
+- `useEffect(function, [])` 함수에서 인자인 `[]`에 `state` 변수를 추가하면 <br/>
+	해당 변수가 참조하는 `state` 값의 변화가 생기면 `useEffect()`의 인자로 전달한 <br/>
+	함수를 실행시킨다.
+
+- 이제 이를 활용해서 코드를 작성해보자.
+
+``` jsx
+//<script type="text/babel">
+const App = () => {
+	const [counter, setValue] = React.useState(0);
+	const BtnClick = () => setValue((prev) => prev + 1);
+	
+	const [Keyword, setKeyword] = React.useState(0);
+	const TextChange = (event) => {
+		setKeyword(event.target.value);
+	};
+
+	React.useEffect(()=>{
+		console.log("버튼을 클릭했습니다.");
+	}, [counter]);
+	
+	React.useEffect(()=>{
+		console.log("검색어를 입력했습니다.");
+	}, [Keyword]);
+	
+	return (
+		<div class="Main">
+			<div class="BtnCount">
+				<h3>Click Here 👇</h3>
+				<button onClick={BtnClick}>Click</button>
+				<h4>버튼 클릭 횟수 : {counter}</h4>
+			</div>
+			<hr/>
+			<div class="SearchBar">
+				<span>검색창</span>
+				<input 
+					type="text"
+					placeholder="검색어를 입력해주세요."
+					onChange={TextChange}
+					value={Keyword}
+				/>
+			</div>
+		</div>
+	);
+};
+//</script>
+```
+
+- 이제 버튼을 클릭하면, "버튼을 클릭했습니다." <br/>
+	검색어를 입력하면 "검색어를 입력했습니다."이라는 문장이 출력 되는 것을 확인할 수 있다.
+
+- 다만 `<App />` Component가 처음 Rendering될 때 <br/>
+	위의 두 문장이 기본으로 출력 되고, 검색 창에 텍스트 입력을 할 때마다 <br/>
+	계속해서 "검색어를 입력했습니다."이라는 문장이 출력 되는 것이 불편하다.
+
+- 특정 조건에만 문장이 출력 되도록 코드를 수정해보자.
+
+``` jsx
+//<script type="text/babel">
+const App = () => {
+	const [counter, setValue] = React.useState(0);
+	const BtnClick = () => setValue((prev) => prev + 1);
+	
+	const [Keyword, setKeyword] = React.useState(0);
+	const TextChange = (event) => {
+		setKeyword(event.target.value);
+	};
+
+	React.useEffect(()=>{
+		console.log("버튼을 클릭하거나");
+		console.log("검색어를 입력해주세요.");
+	}, []);
+	
+	React.useEffect(()=>{
+		if(counter !== 0){
+			console.log("버튼을 클릭했습니다.");
+		}
+	}, [counter]);
+	
+	React.useEffect(()=>{
+		if(Keyword.value === 3){
+			console.log("검색어를 입력했습니다.");
+		}
+	}, [Keyword]);
+	
+	return (
+		<div class="Main">
+			<div class="BtnCount">
+				<h3>Click Here 👇</h3>
+				<button onClick={BtnClick}>Click</button>
+				<h4>버튼 클릭 횟수 : {counter}</h4>
+			</div>
+			<hr/>
+			<div class="SearchBar">
+				<span>검색창</span>
+				<input 
+					type="text"
+					placeholder="검색어를 입력해주세요."
+					onChange={TextChange}
+					value={Keyword}
+				/>
+			</div>
+		</div>
+	);
+};
+//</script>
+```
+
+- 이제 `<App />` Component가 처음 Rendering되면 <br/>
+	**"버튼을 클릭하거나, 검색어를 입력해주세요."** 이라는 문장이 출력 된다.
+
+- 그리고 버튼을 클릭할 때마다 Console 창에 **"버튼을 클릭했습니다."** 문장이
+- 검색 창에 세 글자 이상의 검색어를 입력되면, **"검색어를 입력했습니다."** 문장이 출력 된다.
+
+--- 
 
 ### 📔 Reference
 

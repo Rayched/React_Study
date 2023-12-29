@@ -2,12 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>React 예제 양식</title>
+        <title>useEffect 예제</title>
+        <link href="/Exam/useEffect/useEffectExam.css" rel="stylesheet"/>
     </head>
     <body>
         <div id="menu">
-            <h4>React 예제</h4>
-            <p>React 견본 예제입니다.</p>
+            <h4>'useEffect' 예제</h4>
+            <p>useEffect 함수 예제입니다.</p>
             <hr/>
         </div>
         <div id="root">
@@ -114,21 +115,25 @@
             */
             return (
                 <div id="Main">
-                    <div id="Btn">
+                    <div>
                         <h3>Click Here 👇</h3>
                         <button onClick={BtnClick}>Click me</button>
                         <h4>버튼 클릭 횟수 : {counter}</h4>
                     </div>
                     <hr/>
-                    <span id="SearchBar">
-                        <b>검색창</b>
+                    <div>
+                        <h4>검색어를 입력해주세요.</h4>
                         <input 
                         type="text" 
                         placeholder="검색어를 입력해주세요."
                         onChange={TextChange}
                         value={Keyword}
                         />
-                    </span>
+                        <span>
+                            검색
+                        </span>
+                        <h4>입력된 검색어 : {Keyword}</h4>
+                    </div>
                 </div>
             );
         };
