@@ -18,7 +18,7 @@
 
 - **[React의 정의](/React_Theory/React_정의.md)**
 - **[React 개발 환경 설정](/React_Theory/React_개발_환경_설정.md)**
-- **[React 맛보기 (연결 X)]()**
+- **[React Component 생성 방법](/React_Theory/React_Component_생성_방법.md)**
 - **[JSX](/React_Theory/React_JSX.md)**
 - **[state](/React_Theory/React_State.md)**
 - **[prop](/React_Theory/React_props.md)**

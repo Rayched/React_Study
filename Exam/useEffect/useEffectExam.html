@@ -117,7 +117,7 @@
                 <div id="Main">
                     <div>
                         <h3>Click Here 👇</h3>
-                        <button onClick={BtnClick}>Click me</button>
+                        <button onClick={BtnClick} id="ClickBtn">Click me</button>
                         <h4>버튼 클릭 횟수 : {counter}</h4>
                     </div>
                     <hr/>
@@ -128,8 +128,9 @@
                         placeholder="검색어를 입력해주세요."
                         onChange={TextChange}
                         value={Keyword}
+                        id="SearchBar"
                         />
-                        <span>
+                        <span id="SearchBtn">
                             검색
                         </span>
                         <h4>입력된 검색어 : {Keyword}</h4>

@@ -1,4 +1,4 @@
-button {
+#ClickBtn {
     font-size: 16px;
     font-weight: bold;
     background-color: blueviolet;
@@ -10,7 +10,7 @@ button {
     height: 50px;
 }
 
-span {
+#SearchBtn {
     font-size: 16px;
     font-weight: bold;
     border: 2px solid black;
@@ -20,7 +20,7 @@ span {
     height: 25px;
 }
 
-input {
+#SearchBar {
     border-radius: 5px;
     width: 170px;
     height: 30px;
