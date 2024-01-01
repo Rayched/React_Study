@@ -96,6 +96,71 @@ root.render(<App />);
 
 - 위의 예제를 통해서 `clean-up` 함수가 정상적으로 동작하는 것을 확인하였다.
 
+``` jsx
+//function BtnExample(){
+	const ExamDelete = () => console.log("BtnExample is Deleted");
+
+	const ExamCreate = () => {
+		console.log("BtnExample is Rendering");
+		return ExamDelete;
+	};
+
+	React.useEffect(ExamCreate, []);
+//};
+```
+
+- 위의 코드는 기존 예제에서 사용한 `clean-up` 함수의 형태를 수정한 것이다.
+
+- 소스 코드의 길이가 살짝 늘어나서 어려워 보이지만 <br/>
+	형태만 다를 뿐이지, 기능적으로는 같은 코드이다.
+
+- `useEffect` 함수의 인자로 `ExamCreate` 함수를 전달한 상태에서 <br/>
+	Component가 삭제된 것을 알려주는 `ExamDelete` 함수까지 실행시키고 싶다면 <br/>
+	`ExamCreate` 함수가 `ExamDelete` 함수를 `return`하는 형태로 작성하면 된다.
+
+---
+### `clean-up` 함수 작성 Tip (feat. Nomad coder)
+
+- `React App` 개발할 때 `clean-up` 함수를 사용할 때 아래와 같은 형태로 작성하지는 않는다.
+
+``` jsx
+//function BtnExample(){
+	const ExamDelete = () => console.log("BtnExample is Deleted");
+
+	const ExamCreate = () => {
+		console.log("BtnExample is Rendering");
+		return ExamDelete;
+	};
+
+	React.useEffect(ExamCreate, []);
+//};
+```
+
+- 보통은 `useEffect()` 함수 내부에 전부 작성한다고 한다.
+
+``` jsx
+//function BtnExample(){
+	React.useEffect(function(){
+		console.log("Rendering");
+		
+		return function(){
+			console.log("Deleted");
+		};
+	}, []);
+//}
+```
+
+- 물론 아래와 같이 좀 더 짧은 형태로 작성할 수도 있다.
+
+``` jsx
+//function BtnExample(){
+	React.useEffect(()=>{
+		console.log("Rendering");
+		return () => console.log("Deleted");
+	}, []);
+//}
+```
+
 ---
 ### 📔 Reference
 

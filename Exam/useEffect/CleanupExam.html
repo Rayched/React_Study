@@ -18,12 +18,33 @@
 
     <script type="text/babel">
         function BtnExample(){
-            React.useEffect(()=>{
-                console.log("BtnExample is Rendering");
+            /* Before
+            const ExamDelete = () => console.log("BtnExample is Deleted");
 
-                return () => console.log("BtnExample is Deleted");
+            const ExamCreate = () => {
+                console.log("BtnExample is Rendering")
+                return ExamDelete;
+            };
+
+            React.useEffect(ExamCreate, []);
+            */
+
+            //After
+            //길게 작성한 버전
+            React.useEffect(function(){
+                console.log("BtnExample is Rendering");
+                return function (){
+                    console.log("BtnExample is Deleted");
+                };
             }, []);
 
+            //짧게 작성한 버전
+            /*
+            React.useEffect(()=>{
+                console.log("BtnExample is Rendering");
+                return () => console.log("BtnExample is Deleted");
+            }, []);
+            */
             return (
                 <div>
                     <div id="ShowAndHideExam">
