@@ -23,6 +23,7 @@
 - **[state](/React_Theory/React_State.md)**
 - **[prop](/React_Theory/React_props.md)**
 - **[useEffect](/React_Theory/React_useEffect.md)**
+- **[cleanup]()**
 
 ---
 

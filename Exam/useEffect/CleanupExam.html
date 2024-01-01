@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>cleanup 예제</title>
+        <style></style>
     </head>
     <body>
         <div id="menu">
@@ -17,43 +18,11 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-        function BtnExam(){
-            const [counter, setCounter] = React.useState(0);
-
-            const BtnCount = () => setCounter((BtnClick) => BtnClick + 1);
-
-            React.useEffect(() => {
-                console.log("Display");
-            }, []);
-
-            return (
-                <div>
-                    <h4>Click Here 👇</h4>
-                    <button onClick={BtnCount}>Click me</button>
-                    <h4>버튼 클릭 횟수 : {counter}</h4>
-                </div>
-            );
-        }
-
         function App (){
-            const [showing, setShowing] = React.useState(false);
-
-            const onClick = () => setShowing((prev) => !prev);
-
             return (
-                <div>
-                    <button onClick={onClick}>
-                        {showing ? "Non Display" : "Display"}
-                    </button>
-                    {showing ? <BtnExam /> : null}
-                </div>
+                <div></div>
             );
         };
-        /** 
-         * 버튼을 클릭하면, 버튼 텍스트가 'Non Display'로 바뀌고
-         * TestCompo
-        */
-
         const root = ReactDOM.createRoot(document.getElementById("root"));
         root.render(<App />);
     </script>
