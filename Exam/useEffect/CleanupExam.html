@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>cleanup 예제</title>
-        <style></style>
+        <link href="CleanupExam.css" rel="stylesheet"/>
     </head>
     <body>
         <div id="menu">
@@ -17,13 +17,36 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+        function BtnExample(){
+            React.useEffect(()=>{
+                console.log("BtnExample is Rendering");
+
+                return () => console.log("BtnExample is Deleted");
+            }, []);
+
+            return (
+                <div>
+                    <div id="ShowAndHideExam">
+                        <h4>💻BtnExample</h4>
+                        <h4 id="Message">Hello World</h4>
+                        <p>ReactJS - 'clean-up' 함수 예제입니다.</p>
+                    </div>
+                </div>
+            );
+        };
+
         function App (){
             const [Showing, setShowing] = React.useState(false);
             const onClick = () => setShowing((ShowingState) => !ShowingState);
 
             return (
                 <div>
-                    <button onClick={onClick}>{Showing ? "숨기기" : "표시하기"}</button>
+                    <div>
+                        <button onClick={onClick} id="ShowBtn">
+                            {Showing ? "숨기기" : "표시하기"}
+                        </button>
+                    </div>
+                    {Showing ? <BtnExample /> : null}
                 </div>
             );
         };
