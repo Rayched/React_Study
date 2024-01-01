@@ -10,8 +10,7 @@
             <h4>React - 'cleanup' 예제</h4>
             <hr/>
         </div>
-        <div id="root">
-        </div>
+        <div id="root"></div>
     </body>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -19,8 +18,13 @@
 
     <script type="text/babel">
         function App (){
+            const [Showing, setShowing] = React.useState(false);
+            const onClick = () => setShowing((ShowingState) => !ShowingState);
+
             return (
-                <div></div>
+                <div>
+                    <button onClick={onClick}>{Showing ? "숨기기" : "표시하기"}</button>
+                </div>
             );
         };
         const root = ReactDOM.createRoot(document.getElementById("root"));
