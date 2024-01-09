@@ -1,6 +1,6 @@
 # React_Study
 
-**[ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lobby)** 강의를 수강하면서 공부한 내용 위주로 정리해두는 Repository입니다.
+**[ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lobby)** 강의를 수강하면서 <br/>공부한 내용 위주로 정리해두는 Repository입니다.
 
 ## 📔 Reference
 - **[Github Repository](https://github.com/Rayched/React_Study)**
