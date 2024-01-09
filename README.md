@@ -1,15 +1,11 @@
 # React_Study
 
-`ReactJS` 공부 내용을 (단순 정리, Source Code) Backup 해두는 Git Repository 입니다. <br/>
-
-**[Github Repository](https://github.com/Rayched/React_Study)** <br/>
-**[Tistory Blog](https://rclogstorage.tistory.com/)**
+**[ReactJS로 영화 웹 서비스 만들기](https://nomadcoders.co/react-for-beginners/lobby)** 강의를 수강하면서 공부한 내용 위주로 정리해두는 Repository입니다.
 
 ## 📔 Reference
-
-> **[ReactJS로 영화 웹 서비스 만들기 / Nomad Coders](https://nomadcoders.co/react-for-beginners/lobby)** <br/>
-> **[처음 만난 React / 인프런](https://inf.run/YehVc)** <br/>
-> **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)** <br/>
+- **[Github Repository](https://github.com/Rayched/React_Study)**
+- **[Tistory Blog](https://rclogstorage.tistory.com/)**
+- **[React 공식 문서](https://ko.legacy.reactjs.org/docs/getting-started.html)** 
 
 ---
 ## 1. React Basic
