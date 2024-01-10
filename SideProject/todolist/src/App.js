@@ -12,8 +12,8 @@ function App() {
     if(ToDo === ""){
       return;
     } 
+    setToDos(function (currentArray){ return [...currentArray, ToDo]});
     setToDo("");
-    setToDos(function (currentArray){ return [ToDo, ...currentArray]});
     /**
      * [...Array] == 전개 구문 spread Syntax
      * 
@@ -60,6 +60,15 @@ function App() {
         />
         <button className="AddToDo">추가</button>
       </form>
+      <hr/>
+      {ToDos.map(function (TodoItem, TodoIndex){
+        return (
+          <div>
+            <input type="checkbox" key={TodoIndex}/>
+            {TodoItem}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -99,4 +108,28 @@ export default App;
 /**
  * React - To do List Part II
  * 
+ * array.map() 함수를 통해
+ * 지금까지 추가했던 일정, ToDos에 저장된 배열 요소를
+ * 웹 페이지에 랜더링하도록 구현함.
+ * (Callback 함수, 배열 요소 Rendering)
+ * 
+ * 2024.01.10 수요일 자
+ * To do List 기본형 완료
+ */
+
+/**
+ * To do List에 추가하고 싶은 기능 정리
+ * 
+ * 처음 To do List가 Rendering될 때
+ * [일정 추가] 버튼과 일정만 나오게 하기
+ * 
+ * 여기서 [추가] 버튼을 클릭하면
+ * 일정 입력 form이 나오고
+ * 입력 form에서 '추가' 버튼을 클릭하면
+ * 바로 아래 줄에 일정이 추가되고
+ * '취소' 버튼을 누르면 일정 입력이 취소되도록 구현하기
+ * 
+ * 일정 수정 및 삭제 기능 구현하기
+ * 
+ * Style 수정하기
  */

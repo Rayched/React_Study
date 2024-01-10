@@ -66,7 +66,7 @@
 - Main Project 들어가기 전에 만드는 Side Project
 
 ### Side Project - To do List
-- **[프로젝트 링크 (Github page)]()**
-- **[작업 일지](/Report/Side_Project/Project01_ToDoList.md)**
+- **[프로젝트 링크 (Github page)](/SideProject/todolist/build/index.html)**
+- **[작업 일지](/Report/Side_Project/ToDoList.md)**
 
 ---

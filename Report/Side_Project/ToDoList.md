@@ -4,7 +4,7 @@
 <div style="border: 1px solid">
 	<h4>Side Project - To do List</h4>
 	<div style="font-weight: bold">
-		<ul><li>작업 기간: 2024.01.09 ~ 2024.01.12</li></ul>
+		<ul><li>작업 기간: 2024.01.09 ~ 2024.01.10</li></ul>
 		<ul>
 			📔 Reference
 			<li><a href="https://nomadcoders.co/react-for-beginners/lobby">
@@ -18,9 +18,6 @@
 </div>
 
 ---
-## 2024.01.09 화요일 작업 일지 (1일차)
-
-- 
 
 
 
