@@ -62,11 +62,14 @@
 
 ---
 
-## 2. Side Project
-- Main Project 들어가기 전에 만드는 Side Project
+## 2. Toy Project
+- Main Project, '영화 평가 사이트' 개발 전에 만드는 Toy Project
 
-### Side Project - To do List
-- **[프로젝트 링크 (Github page)](/SideProject/todolist/public/index.html)**
-- **[작업 일지](/Report/Side_Project/ToDoList.md)**
+### To Do List
+- **[Github Repository]()**
+- **[To Do List]()**
 
+### Coin Tracker
+- **[Github Repository]()**
+- **[Coin Tracker]()**
 ---

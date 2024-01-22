@@ -13,6 +13,38 @@ function App() {
       return;
     } 
     setToDos(function (currentArray){ return [...currentArray, ToDo]});
+    /**
+     * ToDos state의 값을 수정할 수 있는 setToDos() 함수에 
+     * 콜백 함수가 아닌 단순 배열을 전달
+     * 
+     * 일정을 추가하면 setToDos 함수에 의해 ToDos state가 업데이트된다.
+     * 
+     * setState 함수는 컴포넌트 state 변경 사항을 대기열에 집어넣고
+     * React에게 해당 Component (자식 포함)가 참조하는 state가 업데이트 됐으니
+     * 해당 Component를 Re-rendering해야한다고 알린다.
+     * setState 함수는 Component를 즉각적으로 갱신하지는 않는다.
+     * 변경 사항이 많은 경우에는 
+     * 다른 변경 사항과 같이 일괄적으로 업데이트하거나
+     * 아니면 해당 Component의 갱신이 미뤄질 수도 있다.
+     * (업데이트하는 과정에서 충돌이 발생해서 지연될 수도 있음)
+     * 
+     * 'setToDos([...ToDos, ToDo])'는
+     * ToDos state의 값을 위의 배열 객체로 업데이트를 하라는 구문이다.
+     * 위의 함수를 통해서 ToDos state 값에 변화가 생긴 것을 파악한 
+     * ReactJS는 해당 state와 연결된 Component를 Re-rendering한다.
+     * 당장은 ReactJS가 처리할 코드의 양이 적기에 업데이트가 빠르지만
+     * 반대로 말하자면 코드의 양이 늘어날수록
+     * ToDos를 참조하는 Component의 갱신이 미뤄질 수도 있다는 것이다.
+     * 
+     * To Do List는 말 그대로 일정 추가 App이다.
+     * 일정을 입력하고 '추가' 버튼을 클릭하면
+     * 하단의 일정 목록에 내가 입력한 일정이 보여야한다.
+     * 빠르게 업데이트가 되야하는데 그렇지 않다면
+     * 이를 사용하는 사용자 입장에서 굉장히 불편하게 느껴질 것이다.
+     * 
+     * 하지만 반대로 setState() 함수에 객체 대신 콜백 함수를 인자로 전달하면
+     * 해당 
+     */
     setToDo("");
     /**
      * [...Array] == 전개 구문 spread Syntax
