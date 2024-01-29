@@ -5,28 +5,28 @@
 ## 📃 Reference
 - **[처음 만난 리액트 / Inflearn](https://inf.run/YehVc)**
 - **[State and Lifecycle / React 공식 문서](https://ko.legacy.reactjs.org/docs/state-and-lifecycle.html)**
+- **[setState](/React_Theory/React_setState.md)**
 
 ---
 ### `state`
 
-- state => "상태" (일반적인 의미)
-- `state` => `React Component`의 상태
-- 여기서 '**상태**' 가 `React Component`가 정상적인지 <br/>
-	아니면 비 정상적 인지의 상태를 의미하는 것이 아니다.
-- `state` => `React Component`의 data, 변경할 수 있는 data
+- `state` : `ReactJS`에서 `let, const` 선언한 변수처럼 데이터를 보관하는 방법 중 하나
+- `let`, `const`과는 다르게 변경할 수 있는 데이터를 다루는 `JavaScript` 객체
+- `state`의 값이 바뀌면 이를 참조하는 `Component`가 다시 `Rendering`된다.
 
-- `state`에는 `Rendering`이나 데이터 흐름에 사용되는 값만 포함 시켜야 한다. <br/>
-	(`state`의 값이 변경되면, 해당 `state`와 연결된 `Component`가 `Re-render`되기 때문) <br/>
+- 일반적으로 `state`의 값은 직접적으로 수정을 해선 안된다. <br/>
+	(`state` 값을 직접적으로 수정하면, 이와 연결된 `Component`가 `Rendering`된다.) <br/>
+	(이 과정에서 개발자가 의도한 것과 다른 형태로 작동될 수도 있다. )
+- 물론 `setState()` 함수를 통해서 `state`의 값을 수정할 수 있다. (이게 더 안전함.)
 
-- `state` == `JavaScript Object`
-- `state` 값은 직접적으로 수정해서는 안되고 <br/>
-	해당 값을 수정하는 `setState()` 함수를 통해서 `state` 수정해야 한다. <br/>
-- `state`를 직접적으로 수정하게 된다면, 해당 `state`와 연결된 `Component`가 <br/>
-	개발자가 의도한 대로 작동하지 않게 될 수도 있다.
+```
+'setState()' 함수는 비동기적으로 동작한다.
+즉, 
+여기서 state 값을 직접적으로 수정하면 Re-rendering이 발생한다.
+즉, 이전 업데이트 내용에 다음 업데이트 내용이 덮어 쓰여질텐데
+이 과정에서 개발자가 의도치 못한 곳에서 문제가 발생할 수도 있다.
 
-- 따라서 `state`의 값을 수정하고자 한다면 <br/>
-	해당 값을 참조하는 `setState()` 함수를 통해서 수정해야 한다.
-
+```
 ---
 
 ### 버튼 예제 만들기 (`state` 활용 X)
