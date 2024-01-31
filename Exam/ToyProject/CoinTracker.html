@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Coin Tracker</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    function App(){
+        const [loading, setLoading] = React.useState(true);
+
+        return (
+            <div>
+                <h3>Coin's</h3>
+                { loading ? <strong>로딩 중...</strong> : null}
+            </div>
+        );
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+</script>
+</html>
+
+<!--
+    Build log
+
+    2024.01.31 수요일
+    1). 웹 페이지에 접속했을 때 Loading Message가 나오고
+        표시해야할 정보의 로딩이 완료됐을 때
+        Loading Message가 사라지고, 가져온 정보를 보여주게 하기
+    
+-->

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>To Do List</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    function App(){
+        const [ToDo, setToDo] = React.useState("");
+        const [ToDos, setToDos] = React.useState([]);
+
+        const onChange = (event) => setToDo(event.target.value);
+
+        function onSubmit(event){
+            event.preventDefault();
+
+            if(ToDo === ""){
+                //일정 공백 입력 방지
+                return;
+            }
+            setToDos((OldToDos) => [...OldToDos, ToDo]);
+            setToDo(""); 
+        }
+
+        console.log(ToDos);
+        return (
+            <div>
+                <h3>To Do List</h3>
+                <h4>현재 일정 개수 : {ToDos.length}</h4>
+                <form onSubmit={onSubmit}>
+                    <input
+                        onChange={onChange}
+                        value={ToDo}
+                        type="text"
+                        placeholder="일정을 입력해주세요."
+                    />
+                    <button>일정 추가</button>
+                </form>
+                <hr/>
+                {
+                    ToDos.map((ToDoItem, ToDoIndex) => {
+                        return (
+                            <div className="ToDoItems">
+                                <input type="checkbox" key={ToDoIndex}/>
+                                {ToDoItem}
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        );
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />)
+</script>
+</html>
+
+<!--
+    React Toy Project 'To Do List' 작업 일지
+
+    1). To Do List App의 기본 형태 제작
+        (입력 form, 일정 추가 버튼 작성)
+        그리고 입력 요소에 입력한 일정을 ToDo state에 저장
+        정상적으로 저장됐는 지 확인하기 위해서
+        ToDo를 console에 출력, 문제 없는 것 확인
+
+    2). 일정은 여러 개가 저장돼야한다.
+        따라서 일정을 저장해둘 ToDos라는 state 생성 (초기 값 : [])
+        그 다음 일정 입력 요소들을 form 태그로 감싸준다.
+    
+    3). ToDos 배열에 일정을 추가시키는 함수 onSubmit 선언
+        ('일정 추가' 버튼 클릭 시, 입력한 값이 ToDos 배열에 저장된다.)
+
+        setToDos 함수를 통해서 ToDos state의 값을 수정할 텐데
+        이전 값이 새로운 값에 덮어쓰기가 되선 안된다.
+        
+        Spread Syntax (전개 구문) 문법을 활용해서
+        이전에 추가한 일정을 담아둔 배열과 새로 추가된 일정 (ToDo)을
+        하나의 새로운 배열로 만들고, 이를 ToDos state에 저장한다.
+
+        그리고 정상적으로 저장됐는 지 확인, 이상 없음
+        ('console.log(ToDos)')
+    
+    4). 이제 ToDos 배열에 저장된 일정들을 웹 페이지에 출력해야한다.
+        배열 메서드인 Array.map() 함수를 활용해서
+        ToDos 배열에 저장된 일정을 웹 페이지 화면에 출력한다.
+-->

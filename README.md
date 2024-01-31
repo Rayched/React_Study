@@ -65,11 +65,6 @@
 ## 2. Toy Project
 - Main Project, '영화 평가 사이트' 개발 전에 만드는 Toy Project
 
-### To Do List
-- **[Github Repository]()**
-- **[To Do List]()**
-
-### Coin Tracker
-- **[Github Repository]()**
-- **[Coin Tracker]()**
+- **[To Do List](/Exam/ToyProject/ToDoList.html)**
+- **[Coin Tracker](/Exam/ToyProject/CoinTracker.html)**
 ---
