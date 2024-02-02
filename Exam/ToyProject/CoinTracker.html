@@ -30,8 +30,9 @@
 
         return (
             <div>
-                <h3>Coin's</h3>
+                <h3>Coin 가격 조회</h3>
                 { loading ? <strong>로딩 중...</strong> : null}
+                <h4>가져온 코인 정보 : {coins.length}</h4>
                 <ul>
                     { 
                         coins.map((coinItem) => {
