@@ -13,11 +13,36 @@
 <script type="text/babel">
     function App(){
         const [loading, setLoading] = React.useState(true);
+        const [coins, setCoins] = React.useState([]);
+
+        React.useEffect(()=>{
+            fetch("https://api.coinpaprika.com/v1/tickers?limit=10")
+                .then((response) => response.json())
+                .then((json) => { 
+                    setCoins(json);
+                    //데이터를 받아오고, 받아온 데이터를 coins state 저장
+
+                    setLoading(false);
+                    //데이터를 받아왔기 때문에 Loading Message가 보이면 안된다.
+                    //loading state의 값을 false로 바꾼다.
+                });
+        }, []);
 
         return (
             <div>
                 <h3>Coin's</h3>
                 { loading ? <strong>로딩 중...</strong> : null}
+                <ul>
+                    { 
+                        coins.map((coinItem) => {
+                            return (
+                                <li>
+                                    {coinItem.name} ({coinItem.symbol})/ ${coinItem.quotes.USD.price}
+                                </li>
+                            );
+                        }) 
+                    }
+                </ul>
             </div>
         );
     }
@@ -34,4 +59,16 @@
         표시해야할 정보의 로딩이 완료됐을 때
         Loading Message가 사라지고, 가져온 정보를 보여주게 하기
     
+    2024.02.02 금요일
+    1). 'Open api'를 통해서 정보를 요청하고 받아온 응답 (request)을
+        console 탭에 출력한다.
+    
+    2). fetch(), then() method란 어떤 역할을 하는 함수일까?
+
+    3). api를 활용해서 서버에서 특정 정보를 요청하고 이를 받아온 다음
+        웹 페이지에 표시하는 방법에 대해 익혔다고 할 수 있다.
+        물론 내 것으로 만들지는 못했다는 점이다.
+
+    4). 'nexon open api'를 활용해서 내 캐릭터 정보를
+        웹 페이지에 출력하는 것은 어떨까?
 -->
