@@ -74,3 +74,4 @@
 - 영화진흥위원회 Open API를 활용해서 주간 박스 오피스 정보를 가져오고 <br/>
     이를 웹 페이지에 출력하는 영화 App
 - **[Project Github](https://github.com/Rayched/React_Movie_App)**
+- **[Movie App 보러가기 👈](https://rayched.github.io/React_Movie_App/)**
